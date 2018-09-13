@@ -68,6 +68,7 @@ public class CommonParams {
 	 * 一阶段支付账户888073157379240对应的KEY值
 	 * 二阶段支付商户10005标识电渠 测试私钥(对应) T_EZF_MERCHANT的T_EZF_MERCHANT_KEY
 	 * 对应T_EZF_MERCHANT_INFO的T_EZF_MD5
+	 * 增加注释
 	 */
 	public static ImmutableMap<String,String> PAY_ENUM_MERCHANT_KEY = ImmutableMap.of(
 			"ALIPAY-WAP_CMCCPAYH5","ue6s8vnZWWUa09i54SJdl19CY",
