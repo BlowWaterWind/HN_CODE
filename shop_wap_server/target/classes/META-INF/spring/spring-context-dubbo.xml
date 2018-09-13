@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:property-placeholder ignore-unresolvable="true" location="classpath:dubbo.properties" />
+	<dubbo:application name="product-shop-wap-server" owner="programmer" organization="asiainfo" />
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<!--<dubbo:registry id="registry1" check="${dubbo.registry.check}" address="${dubbo.registry.address}">-->
+	<!--</dubbo:registry>-->
+
+	<dubbo:registry id="registry1" check="${dubbo.registry.check}" address="zookeeper://10.13.11.7:2181"/>
+	<dubbo:registry id="localRegistry" address="zookeeper://127.0.0.1:2181" default="false" />
+	<dubbo:consumer timeout="60000" retries="0" />
+	<!-- async="true" 异步调用 -->
+	<!-- sent="true" 等待消息发出，消息发送失败将抛出异常。 -->
+	<!-- sent="false" 不等待消息发出，将消息放入IO队列，即刻返回. -->
+	<!-- 如果你只是想异步，完全忽略返回值，可以配置return="false"，以减少Future对象的创建和管理成本 -->
+	<dubbo:reference  id="goodsManageService" registry="registry1" interface="com.ai.ecs.goods.api.IGoodsManageService" check="false" />
+	<dubbo:reference  registry="registry1" id="goodsCommService" interface="com.ai.ecs.goods.api.IGoodsCommService" check="false" />
+	<dubbo:reference registry="registry1" id="pwdQuestionService"  interface="com.ai.ecs.member.api.IPwdQuestionService" check="false" />
+	<dubbo:reference registry="registry1" id="memberSecurityService"  interface="com.ai.ecs.member.api.IMemberSecurityService" check="false" />
+	<dubbo:reference registry="registry1" id="registerService"  interface="com.ai.ecs.member.api.register.IRegisterService" check="false" />
+	<dubbo:reference registry="registry1" id="memberLoginService"  interface="com.ai.ecs.member.api.IMemberLoginService" check="false" />
+	<dubbo:reference registry="registry1" id="loginService"  interface="com.ai.ecs.member.api.login.ILoginService" check="false" />
+	<dubbo:reference id="shopInfoService" registry="registry1" interface="com.ai.ecs.merchant.shop.service.IShopInfoService" />
+	<!-- <dubbo:reference registry="registry1" id="memberThirdLoginService"  interface="com.ai.ecs.member.api.IMemberThirdLoginService" check="false" /> -->
+	<dubbo:reference registry="registry1" id="memberInfoService"  interface="com.ai.ecs.member.api.IMemberInfoService" check="false" />
+	<dubbo:reference  registry="registry1" id="goodsQueryService"  interface="com.ai.ecs.goods.api.IGoodsQueryService" check="false" />
+	<dubbo:reference  registry="registry1" id="goodsCacheService"  interface="com.ai.ecs.goods.api.IGoodsCacheService" check="false" />
+	<dubbo:reference  registry="registry1" id="userGoodsCarService"  interface="com.ai.ecs.goods.api.IUserGoodsCarService" check="false" />
+	<dubbo:reference registry="registry1" id="memberFavoriteService"  interface="com.ai.ecs.member.api.IMemberFavoriteService" check="false" />
+	<dubbo:reference registry="registry1" id="memberAddressService"  interface="com.ai.ecs.member.api.IMemberAddressService" check="false" />
+	<dubbo:reference registry="localRegistry" id="orderService"  interface="com.ai.ecs.order.api.IOrderService" check="false" timeout="60000" retries="0"/>
+	<dubbo:reference id="integrayAccountServiceImpl" registry="registry1" interface="com.ai.ecs.integral.service.IntegrayAccountService" check="false" />
+	<dubbo:reference id="integrayDetailServiceImpl" registry="registry1" interface="com.ai.ecs.integral.service.IntegrayDetailService" check="false" />
+	<dubbo:reference registry="localRegistry"  id="orderQueryService" interface="com.ai.ecs.order.api.IOrderQueryService" check="false" />
+	<dubbo:reference id="userRatingServiceImpl" registry="registry1" interface="com.ai.ecs.integral.service.UserRatingService" check="false" />
+	<dubbo:reference id="userRatingScoreServiceImpl" registry="registry1" interface="com.ai.ecs.integral.service.UserRatingScoreService" check="false" />
+	<dubbo:reference id="arrivalNoticeService" registry="registry1" interface="com.ai.ecs.member.api.IArrivalNoticeService" check="false" />
+	<dubbo:reference id="illegalKeyWordManagerImpl" registry="registry1" interface="com.ai.ecs.integral.service.IllegalKeyWordManager" check="false" />
+
+	<dubbo:reference registry="registry1" id="couponService"  interface="com.ai.ecs.sales.api.ICouponService" check="false" />
+
+	<dubbo:reference id="dictService" registry="registry1" interface="com.ai.ecs.ecop.sys.service.DictService"/>
+	<dubbo:reference id="shopManage" registry="registry1" interface="com.ai.ecs.merchant.shop.ShopManage" />
+
+	<dubbo:reference  id="afterServiceServerIndex" interface="com.ai.ecs.afterservice.api.IAfterServiceServerIndex" check="false" />
+	<dubbo:reference   id="aftersaleServerService" interface="com.ai.ecs.afterservice.api.IAftersaleServerService" check="false" />
+	<dubbo:reference   id="returnGoodUserService" interface="com.ai.ecs.order.api.aftersale.IReturnGoodUserService" check="false" />
+	<dubbo:reference   id="changeGoodUserService" interface="com.ai.ecs.order.api.aftersale.IChangeGoodUserService" check="false" />
+	<dubbo:reference   id="orderSubDetailGiftService" interface="com.ai.ecs.order.api.IOrderSubDetailGiftService" check="false" />
+	<dubbo:reference  id="planService" registry="registry1" interface="com.ai.ecs.goods.api.IPlansService" />
+	<dubbo:reference  id="goodsStaticService" registry="registry1" interface="com.ai.ecs.goods.api.IGoodsStaticService" />
+
+	<dubbo:reference  registry="registry1" id="plansService"  interface="com.ai.ecs.goods.api.IPlansService" check="false" />
+	<dubbo:reference  registry="registry1" id="goodsSkuService"  interface="com.ai.ecs.goods.api.IGoodsSkuService" check="false" />
+	<dubbo:reference registry="registry1" id="marketService"  interface="com.ai.ecs.sales.api.IMarketService" check="false" />
+	<dubbo:reference registry="registry1" id="redPacketService"  interface="com.ai.ecs.sales.api.IRedPacketService" check="false" />
+	<dubbo:reference registry="registry1" id="companyAcctService"  interface="com.ai.ecs.merchant.company.ICompanyAcctService" check="false" />
+	<dubbo:reference registry="registry1" id="payBankService"  interface="com.ai.iis.upp.service.IPayBankService" check="false" />
+	<dubbo:reference registry="registry1" id="homeService"  interface="com.ai.ecs.sales.api.IHomeService" check="false" />
+	<dubbo:reference registry="registry1" id="contractSaleCheckService"  interface="com.ai.ecs.ecsite.modules.contractSale.service.ContractSaleCheckService" check="false"/>
+	<dubbo:reference id="netNumServerService"  interface="com.ai.ecs.ecsite.modules.netNumServer.service.NetNumServerService" check="false"/>
+	<dubbo:reference registry="registry1" id="agreeMentService"  interface="com.ai.ecs.goods.api.agreement.IAgreeMentService" check="false" />
+	<dubbo:reference registry="registry1" id="broadBandService"  interface="com.ai.ecs.ecsite.modules.broadBand.service.BroadBandService" check="false" />
+	<dubbo:reference registry="registry1" id="userBroadbrandService"  interface="com.ai.ecs.member.api.IUserBroadbrandService" check="false" />
+	<dubbo:reference registry="registry1" id="catalogServiceImpl"  interface="com.ai.ecs.ecop.sys.service.CatalogService" check="false" />
+
+	<dubbo:reference registry="registry1" id="contractSaleService"  interface="com.ai.ecs.ecsite.modules.contract.service.ContractSaleService" check="false"/>
+
+	<!-- 流量办理 -->
+	<dubbo:reference registry="registry1" id="flowServeServiceImpl" interface="com.ai.ecs.ecsite.modules.dobusiness.service.FlowServeService" check="false"/>
+
+	<dubbo:reference  registry="registry1" id="commonPropagandaService"  interface="com.ai.ecs.goods.api.ICommonPropagandaService" check="false" />
+	<dubbo:reference registry="registry1" id="phonenumSelectService"  interface="com.ai.ecs.member.api.IPhonenumSelectService" check="false" />
+
+	<dubbo:reference registry="registry1" id="orgBusinessHallService"  interface="com.ai.ecs.merchant.busiHall.IOrgBusinessHallService" check="false"/>
+	<dubbo:reference registry="registry1" id="goodsSkuValueService"  interface="com.ai.ecs.goods.api.IGoodsSkuValueService" check="false" />
+
+	<!--宽带资源查询-->
+	<dubbo:reference registry="registry1" id="qryAddressService"  interface="com.ai.ecs.ecsite.modules.broadBand.service.QryAddressService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="memberMarketSignInService"  interface="com.ai.ecs.member.api.IMemberMarketSignInService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="wtjkzqUsrDetailService"  interface="com.ai.ecs.member.api.IWtjkzqUsrDetailService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="heFamilyService"  interface="com.ai.ecs.ecsite.modules.broadBand.service.HeFamilyService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="heFamilyGoodsService"  interface="com.ai.ecs.broadband.api.IHeFamilyService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="broadBandGoodsService"  interface="com.ai.ecs.broadband.api.IBroadBandService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="phoneAttributionService"  interface="com.ai.ecs.ecsite.modules.phoneAttribution.service.PhoneAttributionService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="memberLoginLogService" interface="com.ai.ecs.member.api.login.IMemberLoginLogService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="mobilePayHongBaoService" interface="com.ai.ecs.ecsite.modules.mobilePayHongBao.service.IMobilePayHongBaoService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="payTypeService"  interface="com.ai.iis.upp.service.IPayTypeService" check="false"/>
+	<dubbo:reference registry="registry1" id="merchantService"  interface="com.ai.iis.upp.service.IMerchantService" check="false"/>
+	<dubbo:reference interface=" com.ai.ecs.member.api.address.IAddressQueryService" id="addressQueryService" registry="registry1" check="false"/>
+	<dubbo:reference interface="com.ai.ecs.order.api.IOrder10085UpdateService" id="order10085UpdateService"  registry="registry1" check="false"/>
+	<!--风控 -->
+	<dubbo:reference registry="registry1" id="terminalRiskOrderService" interface="com.ai.ecs.terminalrisk.api.ITerminalRiskOrderService" check="false"/>
+
+	<!-- 商城活动服务 -->
+	<dubbo:reference registry="registry1" id="activityTargetNumberService"  interface="com.ai.ecs.activity.api.IActivityTargetNumberService" check="false" />
+
+	<!--发送短信-->
+	<dubbo:reference registry="localRegistry" id="smsSendService" interface="com.ai.ecs.ecsite.modules.sms.service.SmsSendService" check="false"/>
+	<!--验证手机号-->
+	<dubbo:reference id="basicInfoQryModifyService" interface="com.ai.ecs.ecsite.modules.myMobile.service.BasicInfoQryModifyService"/>
+	<!--库存日志记录保存 -->
+	<dubbo:reference registry="registry1" id="iStockInterfaceLogService" interface="com.ai.ecs.goods.api.inter.IStockInterfaceLogService" check="false"/>
+	<dubbo:reference id="allowIpService"  interface="com.ai.ecs.ecop.wap.service.AllowIpService" />
+	<dubbo:reference id="orderLogService" interface="com.ai.iis.upp.service.IOrderLogService" />
+
+	<dubbo:reference registry="registry1" id="consupostnServiceImpl" interface="com.ai.ecs.ecsite.modules.broadBand.service.ConsupostnService" check="false"/>
+	<dubbo:reference  registry="registry1" id="checkIsCanOrderService" interface="com.ai.ecs.ecsite.modules.broadBand.service.CheckIsCanOrderService" check="false"/>
+
+	<dubbo:reference registry="registry1" id="posterService" interface="com.ai.ecs.ecop.cms.service.PosterService" check="false"/>
+	<dubbo:reference registry="registry1" id="articleService"  interface="com.ai.ecs.ecop.cms.service.ArticleService" check="false"/>
+
+	<dubbo:reference id="broadbandPosterService" registry="registry1" interface="com.ai.ecs.ecop.cms.service.BroadbandPosterService"/>
+	<dubbo:reference id="simBusiService" interface="com.ai.ecs.order.api.busi.ISimBusiService" check="false" />
+	<dubbo:reference registry="registry1"  interface="com.ai.ecs.cf.api.ICFUserService" id="cFUserService"/>
+	<dubbo:reference registry="registry1"   interface="com.ai.ecs.cf.api.ICFManageService" id="cFManageService"/>
+	<dubbo:reference registry="registry1" id="loginService2"  interface="com.ai.ecs.ecsite.modules.login.service.LoginService" check="false" />
+	<!-- 家宽业务-->
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oAddrSearchService" id="o2oAddrSearchService" />
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oOrderParamTemService" id="o2oOrderParamTemService" />
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oOrderTempService" id="o2oOrderTempService" />
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oOrderService" id="o2oOrderService" />
+	<!-- ==============号卡相关开始================ -->
+	<!-- 号卡订单信息同步给在线公司 -->
+	<dubbo:reference id="synSimOrder2OnlineService"  interface="com.ai.ecs.ecsite.modules.sim.service.ISynSimOrder2OnlineService"  />
+	<dubbo:reference registry="localRegistry" id="recmdMainService" interface="com.ai.ecs.order.api.recmd.IRecmdMainService"/>
+	<dubbo:reference id="tfChnlEmpnoInfoService" interface="com.ai.ecs.order.api.recmd.ITfChnlEmpnoInfoService"/>
+	<dubbo:reference id="flowCouponsGiveService" interface="com.ai.ecs.order.api.recmd.IFlowCouponsGiveService"/>
+	<dubbo:reference id="tfSimOrderLogService" interface="com.ai.ecs.order.api.ITfSimOrderLogService"/>
+	<dubbo:reference id="orderConfigService" interface="com.ai.ecs.order.api.IOrderConfigService"/>
+	<!-- ==============号卡相关结束================ -->
+
+	<!--信息录入，起工程时放开注释-->
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oCommunityService" id="o2oCommunityService" />
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oCommunityPartnersService" id="o2oCommunityPartnersService" />
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oCommunityUserService" id="o2oCommunityUserService" />
+	<!--账单查询-->
+	<dubbo:reference registry="registry1" id="monthBillService"  interface="com.ai.ecs.ecsite.modules.myMobile.service.MonthBillService" check="false"/>
+	<!-- 营销知识查询 -->
+	<dubbo:reference interface="com.ai.ecs.o2o.api.O2oBusinessService" id="o2oBusinessService"/>
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oBussinessRecommendService" id="o2oBusinessRecommendService"/>
+	<dubbo:reference registry="registry1" id="broadbandCommentService" interface="com.ai.ecs.broadband.api.IBroadbandCommentService" check="false"/>
+	<dubbo:reference interface="com.ai.ecs.ecsite.modules.broadBand.service.BroadbandOrderService" id="broadbandOrderService" registry="registry1" check="false"/>
+	<dubbo:reference registry="registry1" id="queryAccountPackagesService"  interface="com.ai.ecs.ecsite.modules.queryPackage.service.QueryAccountPackagesService" check="false"/>
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.o2o.api.O2oBusiCollectService" id="o2oBusiCollectService" check="false"/>
+
+    <!--h5大王卡套餐升级-->
+	<dubbo:reference id="offerBalanceService" interface="com.ai.ecs.ecsite.modules.offerBalance.service.OfferBalanceService"/>
+	<dubbo:reference id="feeBalanceQueryService" interface="com.ai.ecs.ecsite.modules.feeBalanceQuery.service.FeeBalanceQueryService" />
+	<dubbo:reference registry="localRegistry" id="flowServeService" interface="com.ai.ecs.ecsite.modules.dobusiness.service.FlowServeService" />
+	<dubbo:reference id="iSimBusiService" interface="com.ai.ecs.order.api.busi.ISimBusiService" />
+
+	<dubbo:reference id="o2oPreOrderService" interface="com.ai.ecs.o2o.api.O2oPreOrderService"/>
+	<dubbo:reference id="o2oSimInterfaceService" interface="com.ai.ecs.ecsite.modules.o2osim.service.O2oSimService"/>
+
+
+	<dubbo:reference id="o2oChanBizLogService" interface="com.ai.ecs.ecop.give.service.O2oChanBizLogService"/>
+	<dubbo:reference id="o2oLoginService" check="false" interface="com.ai.ecs.ecsmc.service.ec.LoginService"/>
+	<dubbo:reference id="basisServeService"  interface="com.ai.ecs.ecsite.modules.dobusiness.service.BasisServeService"/>
+	<dubbo:reference id="imsQueryService"  interface="com.ai.ecs.ecsite.modules.ims.service.ImsQueryService"/>
+
+	<!--浦发相关-->
+	<dubbo:reference id="bankFamilyService" interface="com.ai.ecs.goods.api.IBankFamilyService"/>
+	<dubbo:reference id="orderBankDepositService" interface="com.ai.ecs.order.OrderBankDepositService"/>
+	<!--支付和冻结结果查询-->
+	<dubbo:reference id="freezeService" interface="com.ai.ecs.order.payquery.FreezeService" registry="registry1"/>
+	<dubbo:reference id="bankInterfaceService" interface="com.ai.ecs.ecsite.modules.bank.service.BankInterfaceService" registry="registry1"/>
+
+
+
+	<dubbo:reference id="o2oSendFlowService"  interface="com.ai.ecs.ecop.give.service.O2oSendFlowService"/>
+	<!--推荐新业务办理-->
+	<dubbo:reference id="orderNewBusiService" interface="com.ai.ecs.order.api.recmd.IOrderNewBusiService"/>
+	<!--号卡推荐-->
+	<dubbo:reference id="mallSmsSendService" interface="com.ai.ecs.order.api.recmd.IMallSmsSendService"/>
+
+	<dubbo:reference registry="localRegistry" id="rechargeService" interface="com.ai.ecs.ecsite.modules.recharge.service.RechargeService"  check="false"/>
+	<dubbo:reference registry="registry1" interface="com.ai.ecs.ecop.broadband.service.IBroadBandConfService" id="broadBandConfService" check="false"/>
+
+	<dubbo:reference id="orderAddonProductService" interface="com.ai.ecs.order.api.busi.IOrderAddonProductService"/>
+
+	<dubbo:reference registry="registry1" id="onlineSimService" interface="com.ai.ecs.ecsite.modules.onlinesim.service.OnlineSimService"/>
+
+	<dubbo:reference registry="registry1" id="orderAppointmentService" interface="com.ai.ecs.order.api.busi.IOrderAppointmentService"/>
+	<dubbo:reference registry="registry1" id="synKeyRefreshService" interface="com.ai.ecs.ecsite.modules.sim.service.ISynKeyRefreshService"/>
+
+	<dubbo:reference registry="registry1" id="companyUserService" interface="com.ai.ecs.merchant.company.ICompanyUserService"/>
+
+	<dubbo:reference registry="registry1" id="entranceConfService" interface="com.ai.ecs.ecop.o2o.service.H5EntranceConfService"/>
+
+	<!--<dubbo:reference registry="registry1" id="ocrService" interface="com.ai.ecs.components.api.IOcrService" check="false"/>-->
+
+	<dubbo:reference registry="registry1" id="o2oSimGroupService" interface="com.ai.ecs.ecsite.modules.o2ogroupsim.service.O2oSimGroupService"/>
+
+	<dubbo:reference registry="registry1"  id="campusMarkService"  interface="com.ai.ecs.campusmark.api.ICampusMarkService" check="false" />
+
+</beans>

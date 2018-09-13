@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--
+ * the process page
+ *
+ * @author: yunzhi li
+ * @version: 2016/10/26 15:50
+ *           Id
+-->
+<head>
+    <!--
+ * the head of wap
+ * 
+ * @author: yunzhi li
+ * @version: 2016/10/27 10:56
+ *           Id
+-->
+<title>呼朋唤友来砍价</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<meta name="WT.si_n" content="砍价进度">
+<meta name="WT.si_x" content="业务详情">
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="./lib/normalize-5.0.0.css"/>
+<link rel="stylesheet" type="text/css" href="./lib/layer-v3.0/layer/skin/default/layer.css"/>
+<link rel="stylesheet" type="text/css" href="./css/wap.css"/>
+<!--插码JS-->
+<script type="text/javascript" src="http://wap.hn.10086.cn/shop/static/js/qm/insdc_w2.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!-- JS -->
+<script type="text/javascript" src="./lib/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="./lib/flexible-0.3.2/flexible.js"></script>
+<script type="text/javascript" src="./lib/layer-v3.0/layer/layer.js"></script>
+<script type="text/javascript" src="./js/wap-config.js"></script>
+<script type="text/javascript" src="./js/ajax-jquery-plugin.js"></script>
+<script type="text/javascript" src="./js/comm.js"></script>
+<script type="text/javascript" src="./js/cutInfo.js"></script> 
+<script type="text/javascript" src="./js/cutprice.js"></script>
+<!--登陆js，以及微信分享js-->
+<script type="text/javascript" src="./js/login.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <!-- banner start -->
+    <!--
+ * banner
+ * 
+ * @author: yunzhi li
+ * @version: 2016/12/13 1:03
+ *           Id
+-->
+<div class="row row_banner">
+    <div class="col col-12">
+     <a href="" class="rule_link">活动规则</a>
+        <a href="" class="main_prod">
+            <img src="./images/new_banner.jpg"/>
+        </a>
+    </div>
+</div>
+
+    <!-- banner end -->
+
+    <!-- 活动进度 start -->
+    <div class="row row_process">
+        <div class="col col-12">
+            <div class="process_box">
+                <div class="proc_title">151****1234：已经砍至 ￥<b>319</b></div>
+                <div class="proc_bar">
+                    <div class="proc_val" style="width: 30%;"></div>
+                </div>
+                <div class="price">
+                    <div class="price_yuan">原价 ￥419</div>
+                    <div class="price_hui">特惠价 ￥219</div>
+                </div>
+                <div class="bt_line">
+                    <a class="bt bt_bang" href="javascript:void(0);"  onClick="helpCut();" otitle='帮他砍一刀' otype='button'><img src="./images/bt_bangkan.png"/></a>
+                    <a class="bt bt_fa" href="javascript:void(0);"  onClick="joinCut();" otitle='我要发起砍价' otype='button'><img src="./images/bt_fakan.png"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 活动进度 end -->
+
+    <!-- 砍价列表 start -->
+    <div class="row row_kanlist">
+        <div class="col col-12">
+            <div class="kanlist_box">
+                <div class="row row_kanlist_title">
+                    <div class="col col-6">砍价团</div>
+                    <div class="col col-6">砍价金额</div>
+                </div>
+                <div class="row row_kanlist_con">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 砍价列表 end -->
+
+    <!-- 产品列表 start -->
+    <!--
+ * 产品列表
+ * 
+ * @author: yunzhi li
+ * @version: 2016/12/13 1:02
+ *           Id
+-->
+<div class="row row_list">
+    <div class="col col-12">
+        <img class="title" src="./images/title.png"/>
+    </div>
+    <div class="col col-12">
+        <div class="list_box">
+            <!-- 产品列表 start -->
+            <!-- 产品列表 start -->
+            <div class="row row_pro_list">
+                <div class="col col-6">
+                    <a href="http://wap.hn.10086.cn/shop/goods/T1QFYTBXJT1RXx1p6K.html">
+                        <div class="p_box">
+                            <div class="p_img">
+                                <img src="./images/p_001.jpg"/>
+                            </div>
+                            <div class="p_info">
+                                <h1>华为 荣耀畅玩5A（移动公开版）</h1>
+                                <p>5.5英寸大屏 八核处理器 1300万后置摄像头</p>
+                                <h2>优惠价：￥<b>699</b></h2>
+                            </div>
+                        </div>
+                    </a>
+                    <!--<a href="" class="list_item"><img src="./images/pro_001.png"/></a>-->
+                </div>
+                <div class="col col-6">
+                    <a href="http://wap.hn.10086.cn/shop/goods/T1azdTByAT1RXx1p6K.html">
+                        <div class="p_box">
+                            <div class="p_img">
+                                <img src="./images/p_002.jpg"/>
+                            </div>
+                            <div class="p_info">
+                                <h1>联想K10 e70 （8G）</h1>
+                                <p>性价比之选 4G双卡双待随心用 5英寸IPS全贴合高清屏幕</p>
+                                <h2>优惠价：￥<b>462</b></h2>
+                            </div>
+                        </div>
+                    </a>
+                    <!--<a href="" class="list_item"><img src="./images/pro_002.png"/></a>-->
+                </div>
+                <div class="col col-6">
+                    <a href="http://wap.hn.10086.cn/shop/goods/T1FzbTByCT1RXx1p6K.html">
+                        <div class="p_box">
+                            <div class="p_img">
+                                <img src="./images/p_003.jpg"/>
+                            </div>
+                            <div class="p_info">
+                                <h1>三星 G5520 (16G)</h1>
+                                <p>5.0英寸大屏 四核1.4GHz处理器</p>
+                                <h2>优惠价：￥<b>1099</b></h2>
+                            </div>
+                        </div>
+                    </a>
+                    <!--<a href="" class="list_item"><img src="./images/pro_003.png"/></a>-->
+                </div>
+                <div class="col col-6">
+                    <a href="http://wap.hn.10086.cn/shop/goods/T1LzZTBybT1RXx1p6K.html">
+                        <div class="p_box">
+                            <div class="p_img">
+                                <img src="./images/p_004.jpg"/>
+                            </div>
+                           <div class="p_info">
+                                <h1>金立 S5.5L</h1>
+                                <p>5.0英寸大屏 四核处理器 1300万后置摄像头</p>
+                                <h2>优惠价：￥<b>1299</b></h2>
+                            </div>
+                        </div>
+                    </a>
+                    <!--<a href="" class="list_item"><img src="./images/pro_004.png"/></a>-->
+                </div>
+            </div>
+            <!-- 产品列表 end -->
+            <!-- 产品列表 end -->
+        </div>
+    </div>
+</div>
+
+    <!-- 产品列表 end -->
+<!-- 弹窗 start -->
+<!--
+ * 弹窗
+ * 
+ * @author: yunzhi li
+ * @version: 2016/12/13 1:00
+ *           Id
+-->
+
+<!-- 微信分享 start -->
+<div class="popup_con p_sharewx_con">
+    <div class="popup p_sharewx">
+        <div class="p_title">
+            <a href="" class="p_close">
+                <img src="./images/close.png"/>
+            </a>
+        </div>
+        <div class="p_content">
+            <img class="share_wx" src="./images/share_wx.png"/>
+        </div>
+    </div>
+</div>
+<!-- 微信分享 end -->
+
+<!-- 关注 start -->
+<div class="popup_con p_guanzhu_con">
+    <div class="popup p_guanzhu">
+        <div class="p_title">
+            <a href="" class="p_close">
+                <img src="./images/close.png"/>
+            </a>
+        </div>
+        <div class="p_content">
+            <img class="guanzhu" src="./images/share_qr.png"/>
+        </div>
+    </div>
+</div>
+<!-- 关注 end -->
+
+<!-- 详情页 start -->
+<div class="popup_con p_detail_con">
+    <div class="popup p_detail">
+        <div class="p_title">
+            <h2>核心参数</h2>
+            <a href="" class="p_close">
+                <img src="./images/close.png"/>
+            </a>
+        </div>
+        <div class="p_content">
+            <div class="p_scroll">
+                <!-- 举例 可删除 start -->
+                <div style="">
+                    <img src="./images/detail.jpg"/>
+                </div>
+                <!-- 举例 可删除 end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 详情页 end -->
+
+<!-- 活动规则 start -->
+<div class="popup_con p_rule_con">
+    <div class="popup p_rule">
+        <div class="p_title">
+            <h2>活动规则</h2>
+            <a href="" class="p_close">
+                <img src="./images/close.png"/>
+            </a>
+        </div>
+         <div class="p_content">
+            <div class="p_scroll">
+                <p>1)活动时间：即日起-2017年1月21日</p>
+                <p>2)参与方式：</p>
+                <p>已绑定公众微信号“湖南移动和你在一起”，回复“砍价”，获取活动页面后分享至朋友圈或直接发送给好友，邀请朋友帮忙砍价；未绑定公众微信号请关注并绑定“湖南移动和你在一起”回复“砍价”即可参与活动。</p>
+                <p>3)获奖规则</p>
+                <p>①本活动仅限湖南移动客户参与；</p>
+                <p>②每位用户活动周期内仅可发起1次砍价活动（同一手机号同一微信号即认定为同一用户）；</p>
+                <p>③砍价到达优惠金额后，购机红包即时赠送至发起活动的手机号码上，用绑定的手机号码登录湖南移动网上商城即可使用；</p>
+                <p>④购机红包限购买指定机型优惠机型，购机红包有效期至2017年1月21日23:59:59,逾期失效，红包不可拆分不可折现，不可转赠，若客户需要退货，红包不可退；</p>
+                <p>⑤优惠机型数量有限，先到先得，售完即止。</p>
+                <p>4）发货时间：当期砍价活动结束后的三个工作日内安排发货。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 活动规则 end -->
+
+<!-- 活动提示 start -->
+<div class="popup_con p_tips_con">
+    <div class="popup p_tips">
+        <div class="p_title">
+            <a href="" class="p_close">
+                <img src="./images/close.png"/>
+            </a>
+        </div>
+        <!-- 成功砍价 start -->
+        <div class="p_content">
+             <p>恭喜您<br>已成功帮TA砍价8元</p>
+            <a href="" class="bt"><img src="./images/bt_ok.png"/></a>
+        </div>
+        <!-- 成功砍价 end -->
+
+        <!-- 已完成 start -->
+        <!--<div class="p_content">-->
+        <!--<p>您的好友已完成砍价</p>-->
+        <!--<p>无需再帮TA砍价</p>-->
+        <!--<a href="" class="bt"><img src="./images/bt_ok.png"/></a>-->
+        <!--</div>-->
+        <!-- 已完成 end -->
+
+        <!-- 晚了 start -->
+        <!--<div class="p_content">-->
+        <!--<p>亲爱的用户，您来晚了，</p>-->
+        <!--<p>本期砍价活动已结束~</p>-->
+        <!--<p>建议您微信关注“湖南移动和你在一起”，</p>-->
+        <!--<p>精彩活动我们将第一时间告知您！</p>-->
+        <!--<a href="" class="bt"><img src="./images/bt_ok.png"/></a>-->
+        <!--</div>-->
+        <!-- 晚了 end -->
+    </div>
+</div>
+<!-- 活动提示 end -->
+
+<!-- 登陆弹窗 start -->
+<div class="popup_con p_login_con">
+    <div class="popup p_login">
+        <div class="p_title">
+            <a href="" class="p_close">
+                <img src="./images/close.png"/>
+            </a>
+        </div>
+        <div class="p_content">
+            <form>
+                <div class="form_line">
+                    <div class="form_label"> 手机号码：</div>
+                    <div class="form_ctrl">
+                        <input placeholder="湖南移动号码" value=""  id="mobileg"  class='mobileg' otitle='输入手机号' otype='button'>
+                        <span class="form_tips"> 本次活动仅限湖南移动用户参与，请输入湖南移动手机号码。 </span>
+                    </div>
+                </div>
+
+                <div class="form_line">
+                    <div class="form_label"> 验证码：</div>
+                    <div class="form_ctrl sms_code">
+                        <input placeholder="" value=""  id="codeg"   class='codeg'  otitle='输入验证码' otype='button'>
+                        <a href="javascript:void(0);" class="get_sms" id="btnSendCode" onclick="smsMessage();"  otitle='获取验证码' otype='button'>获取验证码</a>
+                    </div>
+                </div>
+
+                <div class="form_line">
+                    <button class="form_sub" type="button" onclick="loginPhone();"  otitle='确定' otype='button'>确 认</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 登陆弹窗 end -->
+
+<!-- 弹窗 end -->
+</body>
+</html>

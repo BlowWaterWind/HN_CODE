@@ -1,0 +1,31 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.1</jsp-version>
+    <short-name>Example TLD</short-name>
+    <tag>
+        <name>map</name>
+        <tag-class>com.ai.ecs.ecm.mall.wap.platform.utils.BaiduMapTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>样式class</description>
+            <name>bmapClass</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <description>样式style</description>
+            <name>bmapStyle</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <description>输出坐标系</description>
+            <name>coordinate</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <description>回调函数</description>
+            <name>callback</name>
+            <required>true</required>
+        </attribute>
+
+    </tag>
+</taglib>

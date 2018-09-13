@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:task="http://www.springframework.org/schema/task"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+  <description>EcSite Diamond Client Configuration</description>
+<!--
+  <bean id="aropertiesConfiguration" class="com.ai.ecs.ecsite.diamond.client.PropertiesConfigurationFactoryBean">
+    <constructor-arg index="0" value="${diamond.client.address}" />
+    <constructor-arg index="1" value="${diamond.client.port}" />
+    <constructor-arg index="2" value="${diamond.client.project.code}" />
+    <constructor-arg index="3" value="${diamond.client.project.profile}" />
+    <constructor-arg index="4" value="${diamond.client.project.module}" />
+  </bean>
+  <bean id="springProperties" class="com.ai.ecs.ecsite.common.utils.SpringProperties">
+    <property name="properties" ref="aropertiesConfiguration" />
+  </bean>
+-->  
+		<!--<bean id="propertiesConfiguration" class="com.github.diamond.client.PropertiesConfigurationFactoryBean">
+            <constructor-arg index="0" value="10.154.73.93" />
+            <constructor-arg index="1" value="8283" />
+            <constructor-arg index="2" value="web_shopwap" />
+            <constructor-arg index="3" value="production" />
+            <constructor-arg index="4" value="common" />
+        </bean>
+        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+            <property name="properties" ref="propertiesConfiguration" />
+        </bean>-->
+
+  <!-- 缓存配置 -->
+  <!-- 
+  <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    <property name="configLocation" value="classpath:${ehcache.configFile}" />
+  </bean>
+   -->
+</beans>

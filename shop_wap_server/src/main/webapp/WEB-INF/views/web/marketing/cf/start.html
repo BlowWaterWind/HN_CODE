@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--
+ * the project start page
+ *
+ * @author: yunzhi li
+ * @version: 2017/4/23 21:40
+ *           Id
+-->
+<head>
+    <title>Start, public by Aiflow</title>
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="./tmp/Semantic-UI-2.2.9/dist/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="./tmp/DataTables-1.10.13/dataTables.semanticui.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="./tmp/DataTables-1.10.13/fixedHeader.semanticui.min.css"/>
+    
+
+    <!-- JS -->
+    <script type="text/javascript" src="./tmp/jquery-3.1.1.min.js"></script>
+    
+    <script type="text/javascript" src="./tmp/DataTables-1.10.13/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./tmp/DataTables-1.10.13/dataTables.semanticui.min.js"></script>
+    <script type="text/javascript" src="./tmp/Semantic-UI-2.2.9/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="./tmp/DataTables-1.10.13/dataTables.fixedHeader.min.js"></script>
+    
+    <style type="text/css">
+        /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+        .noscrollbar::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px;
+            height: 3px;
+            background-color: #F5F5F5;
+        }
+
+        /*定义滚动条轨道 内阴影+圆角*/
+
+        ::-webkit-scrollbar-track {
+            background-color: #ffffff;
+        }
+
+        /*定义滑块 内阴影+圆角*/
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 0;
+            background-color: #eeeeee;
+        }
+
+        .framescrollbar::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+            background-color: #F5F5F5;
+        }
+
+        /*定义滚动条轨道 内阴影+圆角*/
+
+        .framescrollbar::-webkit-scrollbar-track {
+            background-color: #ffffff;
+        }
+
+        /*定义滑块 内阴影+圆角*/
+
+        .framescrollbar::-webkit-scrollbar-thumb {
+            border-radius: 0;
+            background-color: #eeeeee;
+        }
+
+        .frame {
+            width: 366px;
+            margin: 10px auto;
+            border-radius: 50px;
+            box-sizing: content-box;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .13), 0 3px 6px rgba(0, 0, 0, .26);
+        }
+
+        .frame .frame_head,
+        .frame .frame_footer {
+            height: 50px;
+            background-color: #FAFAFA;
+            text-align: center;
+        }
+
+        .frame .frame_head {
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+
+        .frame .frame_head .frame_icon {
+            width: 50px;
+            height: 6px;
+            margin: 0 auto;
+            border-radius: 3px;
+            background-color: #777777;
+        }
+
+        .frame .frame_footer {
+            background-color: #EAEAEA;
+        }
+
+        .frame .frame_body {
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            border: 3px solid #FAFAFA;
+            width: 4.8rem;
+        }
+
+        .frame_web .frame_body iframe,
+        .frame .frame_body iframe {
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .frame_web .frame_head,
+        .frame_web .frame_footer {
+            display: none;
+        }
+
+        .frame_web .frame_body {
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            border: none;
+            width: 100%;
+            height: calc(100vh - 42px) !important;
+        }
+
+        .frame.frame_iphone5 {
+            width: 326px;
+        }
+
+        .frame.frame_iphone5 .frame_head,
+        .frame.frame_iphone5 .frame_footer {
+            width: 326px;
+        }
+
+        .frame.frame_iphone5 .frame_body {
+            width: 320px;
+            height: 568px;
+        }
+
+        .frame.frame_iphone6 {
+            width: 381px;
+        }
+
+        .frame.frame_iphone6 .frame_head,
+        .frame.frame_iphone6 .frame_footer {
+            width: 381px;
+        }
+
+        .frame.frame_iphone6 .frame_body {
+            width: 375px;
+            height: 667px;
+        }
+
+        .frame.frame_iphone6s {
+            width: 420px;
+        }
+
+        .frame.frame_iphone6s .frame_head,
+        .frame.frame_iphone6s .frame_footer {
+            width: 420px;
+        }
+
+        .frame.frame_iphone6s .frame_body {
+            width: 414px;
+            height: 736px;
+        }
+
+        .frame .frame_head,
+        .frame .frame_footer {
+            width: 366px;
+        }
+
+        .frame .frame_body {
+            width: 360px;
+            height: 640px;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .ui.page_frame {
+            height: calc(100vh - 42px) !important;
+            box-sizing: border-box;
+            margin: 42px 0 0 0 !important;
+        }
+
+        .page_frame .ui.sidebar, .page_frame .pusher {
+            height: calc(100vh - 42px) !important;
+            min-height: inherit !important;
+            overflow: auto;
+        }
+
+        .page_frame .ui.sidebar {
+            z-index: 9;
+        }
+
+        .page_link {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--
+ * 升级浏览器到 IE9+，或是 chrome
+ * 
+ * @author: yunzhi li
+ * @version: 2016/11/21 10:20
+ *           Id
+-->
+
+<!--[if lt IE 9]>
+<div class="m-browsehappy">
+    <div class="browsehappy-inner">
+        <h3 class="title">对不起！<br>您的浏览器版本太低，请升级你的浏览器</h3>
+
+        <p class="suggest">建议使用：</p>
+
+        <p class="brower">
+            <span class="item">
+                <a class="ie image" href="https://www.microsoft.com/en-us/download/internet-explorer.aspx"
+                   target="_blank" title="下载Internet Explorer浏览器"></a>
+                <b class="text">ie9+</b>
+            </span>
+            <span class="item">
+                <a class="chrome image" href="http://www.google.cn/intl/zh-CN/chrome/browser/?spm=1.7274553.0.0.benzR1"
+                   target="_blank" title="下载Chrome浏览器"></a>
+                <b class="text">chrome</b>
+            </span>
+        </p>
+
+        <b class="browsehappy-arrow"></b>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="./css/update-brower.css"/>
+<![endif]-->
+
+
+
+<div class="ui fixed menu">
+    <a class="item item_pagelist">
+        <i class="sidebar icon"></i>
+        文件列表
+    </a>
+    <a class="item item_web">
+        <i class="browser icon"></i>
+        WEB端
+    </a>
+    <a class="item item_wap">
+        <i class="mobile icon"></i>
+        WAP端
+    </a>
+    
+    
+    
+    
+    
+    
+    
+</div>
+<div class="ui bottom attached pushable page_frame">
+    <div class="ui left inline vertical overlay uncover visible sidebar menu page_list">
+        
+        <div class="page_list">
+            <table class="pageListTable ui table" data-page-length="200">
+                <thead>
+                <tr>
+                    <th class="proNum">文件名称&标题</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                    
+                        <tr>
+                            <td>
+                                <a class="page_link" href="./index.html" target="frame">
+                                    
+                                    
+                                    首页
+                                    <br/>
+                                    index.html
+                                </a>
+                            </td>
+                        </tr>
+                    
+                
+                    
+                        <tr>
+                            <td>
+                                <a class="page_link" href="sub.html" target="frame">
+                                    
+                                    
+                                    购买页面
+                                    <br/>
+                                    sub.html
+                                </a>
+                            </td>
+                        </tr>
+                    
+                
+                    
+                        <tr>
+                            <td>
+                                <a class="page_link" href="zffs.html" target="frame">
+                                    
+                                    
+                                    支付方式
+                                    <br/>
+                                    zffs.html
+                                </a>
+                            </td>
+                        </tr>
+                    
+                
+                    
+                        <tr>
+                            <td>
+                                <a class="page_link" href="zfcg.html" target="frame">
+                                    
+                                    
+                                    支付成功
+                                    <br/>
+                                    zfcg.html
+                                </a>
+                            </td>
+                        </tr>
+                    
+                
+                    
+                        <tr>
+                            <td>
+                                <a class="page_link" href="zcjs.html" target="frame">
+                                    
+                                    
+                                    众筹计算
+                                    <br/>
+                                    zcjs.html
+                                </a>
+                            </td>
+                        </tr>
+                    
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="pusher">
+        
+        
+            <div class="frame_box frame">
+                <div class="frame_head">
+                    <div class="frame_icon"></div>
+                </div>
+                <div class="frame_body noscrollbar">
+                    <iframe id="frame" name="frame" onload="controllFrame();"
+                            src="./index.html"></iframe>
+                </div>
+                <div class="frame_footer"></div>
+            </div>
+        
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.ui.sidebar.page_list').sidebar({
+            dimPage: false,
+            context: $('.page_frame')
+        }).sidebar('attach events', '.item_pagelist');
+        $('.pageListTable').on('init.dt', function () {
+            $('.page_filter').css({
+                padding: '10px 0 10px 10px'
+            });
+            $('.page_filter').find('.ui.input').addClass('fluid');
+        }).DataTable({
+            fixedHeader: true,
+            paging: false,
+//            ordering: false,
+            info: false,
+            dom: '<"page_filter"f><t>'
+        });
+        $(".page_link").click(function () {
+            $("#frame").removeAttr('style');
+            $('#frame').fadeTo(0, 0);
+            setTimeout(function () {
+                $('#frame').fadeTo(0, 1);
+            }, 1000);
+        });
+        $('.item_web').click(function () {
+            $("#frame").removeAttr('style');
+            $('#frame').fadeTo(0, 0);
+            $('.frame_box').removeClass('frame').addClass('frame_web');
+            $('.frame_box .frame_body').removeClass('noscrollbar').addClass('framescrollbar');
+            var url = $('#frame').attr('src')
+            $("#frame").attr('src', url);
+            setTimeout(function () {
+                $('#frame').fadeTo(0, 1);
+            }, 1000);
+        });
+        $('.item_wap').click(function () {
+            $("#frame").removeAttr('style');
+            $('#frame').fadeTo(0, 0);
+            $('.frame_box').removeClass('frame_web').addClass('frame');
+            $('.frame_box .frame_body').removeClass('framescrollbar').addClass('noscrollbar');
+            var url = $('#frame').attr('src')
+            $("#frame").attr('src', url);
+            setTimeout(function () {
+                $('#frame').fadeTo(0, 1);
+            }, 1000);
+        });
+    });
+
+    function controllFrame() {
+        var minW = $('.frame_body').width();
+        var h = $(window.frames["frame"].document).height();
+        var w = $(window.frames["frame"].document).width();
+        w = w > minW ? w : minW;
+        $("#frame").height(h);
+        $(".frame #frame").width(w);
+        $(".frame_web #frame").width('100%');
+        $('#frame').fadeTo(0, 1);
+    }
+</script>
+</body>
+</html>

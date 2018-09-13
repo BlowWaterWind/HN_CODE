@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- 商品浏览统计嵌入代码 start -->
+<!-- 商品浏览统计嵌入代码 end -->
+
+<title>湖南移动商城</title>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" href="css/list.css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/secondsKill.js"></script>
+	
+</head>
+<body>
+<!--弹出层-->
+<button id="alertMsgInfoBT" type="button" class="buy" data-toggle="modal" data-target="#alertMsgInfo" aria-hidden="true"
+        style="display:none;"></button>
+<div class="modal fade  modal-prompt" id="alertMsgInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modle-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only" id="btnClose">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="pop_670_cont" id="alertMsgInfo_content"></div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0);" class="btn btn-blue btn-2x" onclick="hideMe();">确  定</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<script type="text/javascript">
+
+    function __innnerMessageShow() {
+        if ($("#alertMsgInfo").is(":hidden")) {
+            $("#alertMsgInfo").modal("show");
+        }
+    }
+
+    function __innnerErrorMessageShow() {
+        if ($("#alertMsgInfoError").is(":hidden")) {
+            $("#alertMsgInfoError").modal("show");
+        }
+    }
+
+    /**
+     * 提示消息
+     * @param obj
+     */
+    function showAlert(obj,callback) {
+        $("#alertMsgInfo_content").html(obj);
+        __innnerMessageShow();
+        if (typeof callback === "function") {
+            setTimeout(callback, 5000);
+        }
+    }
+
+    function hideMe() {
+        $("#alertMsgInfo_content").html("");
+        $("#btnClose").click();
+    }
+
+</script>
+<div class="top container">
+  <div class="header sub-title">
+    <h1>秒杀商品</h1>
+    <!--购物车链接 开始-->
+   </div>
+    <!--购物车链接 结束-->
+<ul class="nav-slide">
+	<li class="nav-arrow"></li>
+	<li><a href="/shop/"><i class="icon-nav-wt-home"></i>移动商城</a></li>
+	<!--<li><a href="号卡.html"><i class="icon-nav-lh"></i>靓号</a></li>-->
+	<li><a href="/shop/goodsQuery/linkToGoodsList?categoryId=10000001&queryListpageCode=PHONE_LISTPAGE_B2C&queryListpageId=100"><i class="icon-nav-home"></i>选机中心</a></li>
+	<li><a href="/shop/goods/T1SaETBsZT_RXx1p6K.html"><i class="icon-nav-ss"></i>最新活动</a></li>
+	<!--<li class="share"><a href="#"><i class="icon-nav-fx"></i>分享</a></li>-->
+	<li><a href="/shop/memberInfo/toMemberCenter"><i class="icon-nav-wo"></i>个人中心</a></li>
+</ul>
+  <div class="modal-bg"></div>
+</div>
+<div class="container"> 
+<!--商品展示图 -->
+<div class="swiper-container swiper-container-sub" id="swiper-sub">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img  src="images/cpC106-8.jpg" /></div>
+    </div>
+     <div class="pagination"></div>
+</div>
+
+
+<div class="sp-lr">
+<!--商品信息--> 
+ <!--倒计时 -->
+	<!--倒计时 -->
+<div class="time-djs" ><!--活动没开始时clss bg-gray 为灰色 -->
+  <div class="djs-jg">
+    <span class="ms-jg" id="killPrice">￥99.00</span>
+    <div class="djs-fj">
+    </div>
+  </div>
+  <div class="djs-list">
+    <div class="date-time"><span id="mark_date">开始</span>：<span id="b_time">--:--:--</span>
+    
+    <span id="mark_date">结束</span>：<span id="e_time">--:--:--</span>
+    </div>
+    
+ 
+    
+  </div>
+</div>
+ <div class="sp-bt sp06">
+         <div class="xz-con">
+        <dl class="xz-dr">
+          <dd>
+            <h2>酷派 C106-8&nbsp;&nbsp;4G智能手机</h2></dd></dl></div>
+      <div class="kc-item">库存：<em id="kkNum">0</em>件</div>
+ </div>
+ <script type="text/javascript">
+var intDiff;
+function timer(intDiffIn){
+	intDiff=intDiffIn;
+	timeOff();
+	setInterval(timeOff, 1000);
+} 
+
+function timeOff(){
+	if(intDiff<1){
+		window.location.reload();
+	}
+	var hour=0,
+		minute=0,
+		second=0;//时间默认值		
+	if(intDiff > 0){
+		day = Math.floor(intDiff / (60 * 60 * 24));
+		hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+	}
+	if (minute <= 9) minute = '0' + minute;
+	if (second <= 9) second = '0' + second;
+	$("#c_time").html(day+"天"+hour+"小时"+minute+"分钟"+second+"秒");
+	intDiff--;
+	}
+</script>
+<!-- 担保机构 -->
+ <div class="dt-extend">
+      <div class="wrapper">
+        <div id="item-extend-info" class="lgray">
+          <div class="guarantee">
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<div id="table_select_contact_info" class="sp-fr hide">
+     <table cellpadding="0" cellspacing="0" class="sp-table" >
+          <tr>
+            <th>赠送款（总）</th>
+            <th>除末月外每月<br/>赠送额</th>
+            <th>末月<br/>赠送额</th>
+            <th>月保底<br/>消费</th>
+            <th>协议期</th>
+          </tr>
+          <tr class="active">
+            <td id="tdGiftFee"></td>
+            <td id="tdFee1"></td>
+            <td id="tdFee2"></td>
+            <td id="tdConsume"></td>
+            <td id="tdContractMonth"></td>
+          </tr>
+    </table>
+</div>
+
+<a href="#"><div class="sp-lc sub-shop-mes">
+	<span class="sp-phone" style="color:red">手机秒杀规则：<br>
+1. 凡参与本次活动者，均视为接受本活动规则。<br>
+2. 秒杀成功说明：客户秒杀成功将有弹窗提示客户秒杀成功，点击确认后可前往订单提交和支付页面，客户需在15分钟内完成支付，之后将有工作人员联系秒杀成功客户。否则视为秒杀失败。<br>
+3. 湖南移动有权依据自身技术手段，在事先不通知的情况下取消被认定为通过不正当手段（秒杀器、作弊器等）秒杀的订单，取消结果，将以公告形式公布。 <br>
+4.手机秒杀仅限在手机营业厅秒杀，12月9日-12月11日、12月14日-12月16日下午3点每天秒杀2台酷派 C106-8手机，12月12日下午3点秒杀2台iPhone SE(64G),12月13日下午3点秒杀2台iPhone SE (32G)。客户需先行下载手机营业厅并登陆才可参与秒杀。<br>
+5.参与秒杀的客户必须为4G套餐客户，原价2000元以上终端需要求客户在网1年以上，即2015年12月9日前入网。<br>
+6.每位客户仅能成功秒杀1次，且六个月内仅能参与一次湖南移动开展的终端秒杀活动。<br>
+7.参与秒杀活动的终端仅限湖南移动号码使用。<br>
+8.本广告仅为要约邀请，不构成合同或协议内容<br>
+	</span>
+</div></a>
+<!-- 图文详情弹框 -->
+<!--查看图文详情 begin-->
+<div class="modal fade modal-hy" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-content">
+      <div class="top container">
+        <div class="header sub-title">
+          <h1>商品详情</h1>
+        </div>
+      </div>
+    
+      <script>
+	$(document).ready(function(){
+			var $li = $('#tab li');
+			var $ul = $('#content ul');
+						
+			$li.click(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			});
+	});
+</script> 
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- 颜色，内存，套餐选择弹框 --> 
+   <div class="xzcs">
+      <div class="xz-con">
+        <dl class="xz-dr">
+          <dt><img src="images/01d.png" /></dt>
+          <dd>
+            <h2>酷派 C106-8&nbsp;&nbsp;<strong>4G智能手机</h2>
+          <span class="xz-text">总价 : <strong id="goodsPrice_2">￥99.00</strong></span>
+          </dd>
+        </dl>
+        <span> 
+								   <div class="sp-lc">
+								    <h2>颜色：</h2>
+									<ul class="sp-button" id="attrUl_100001" attrName="颜色"
+										goodsAttrName="attr_">
+											    <li class="on" id="attrLi_40000092259">
+											         <a href="javascript:void(0);" 
+											            goodsSkuId=40000092304
+											            prodAttrId=100001
+											            prodAttrValueId=40000092259 
+											            onclick="checkSelect('40000092259');">岁月金
+											         </a>
+											     </li>
+									</ul>
+									</div> 
+        
+		</span>
+        <div class="sp-lc" id="numberSelectDiv" style="display:none;">
+          <h2>数量</h2>
+          
+          <div id="jr" class="sp-button sp-number">
+            <input class="text_box" id="phoneGMNum" name="" type="text" value="1" onblur="phoneGMNumber(this)"/>
+          </div>
+          <div class="kc-item">库存：<em id="stockNum_2">0</em></div>
+        </div>
+      </div>
+      <div class="sub-bnt">
+          <a id="confirmAttrBtn" href="javascript:;" class="btn btn-rose btn-block">确定</a>
+      </div>
+    </div>
+    <div class="model-bg"> </div>
+  </div>
+</div>
+
+
+<!--商品评价 begin-->
+<div class="modal fade modal-hy" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-content">
+      <div class="top container">
+        <div class="header sub-title">
+          <h1>商品评价</h1>
+<ul class="nav-slide">
+	<li class="nav-arrow"></li>
+	<li><a href="/shop/"><i class="icon-nav-wt-home"></i>移动商城</a></li>
+	<!--<li><a href="号卡.html"><i class="icon-nav-lh"></i>靓号</a></li>-->
+	<li><a href="/shop/goodsQuery/linkToGoodsList?categoryId=10000001&queryListpageCode=PHONE_LISTPAGE_B2C&queryListpageId=100"><i class="icon-nav-home"></i>选机中心</a></li>
+	<li><a href="/shop/goods/T1SaETBsZT_RXx1p6K.html"><i class="icon-nav-ss"></i>最新活动</a></li>
+	<!--<li class="share"><a href="#"><i class="icon-nav-fx"></i>分享</a></li>-->
+	<li><a href="/shop/memberInfo/toMemberCenter"><i class="icon-nav-wo"></i>个人中心</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="container hy-content">
+        <div id="outer" class="tab-ct">
+            <div id="contentPj" class="tab-dr tab-dl">
+				
+            <div id="scroller" class="pj-list" >
+              <ul id="pj-list">
+			  </ul>
+			   <div class="jz-list"><a href="javascript:void(0)" id="loadMorePj" goodsId="40000092303"  url="goodsInfo/queryUserRating" pageNo=1 pageSize=8 count=1>加载更多</a></div>
+            </div>
+               <div class="iScrollVerticalScrollbar iScrollLoneScrollbar"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+
+<div class="fix-br">
+  <div class="affix foot-menu">
+    <nav class="container active-fix">
+      <div class="btn-other"><!--<a href="#" class="ac-link active"><span></span>导购</a>-->
+         
+         
+        <div class="more-box"></div>
+      </div>
+      <div class="btn-right" style="float:right">
+      <!-- 裸机/配件  -->
+       <a id="statusBtn" href="javascript:void(0);" class="btn hide"  otype="button" >已结束</a>
+      <a id="secondsKillBtn" href="javascript:void(0);" class="btn btn-rose hide"  otype="button" otitle="立即秒杀" oarea="终端">立即秒杀</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- 获取营销活动信息 -->
+
+
+<form id="goodsBuyForm" action="/shop/goodsBuy/linkToConfirmOrder" method="post">
+	<input type="hidden" id="goodsId" value="40000166990" />
+	<input type="hidden" name="marketId" value="100024795323" />
+    <input type="hidden" name="userGoodsCarList[0].shopName" value="湖南省移动公司"/>
+    <input type="hidden" name="userGoodsCarList[0].shopId" value="1"/>
+    <input type="hidden" name="userGoodsCarList[0].shopTypeId" value="6"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsShortDesc" value="颜色:锋芒金" />
+    <input type="hidden" name="userGoodsCarList[0].goodsSkuId" value="40000166991"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsStandardAttr"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsStandardAttrId"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsSalePrice" value=""/>
+    <input type="hidden" name="userGoodsCarList[0].goodsType" value="2"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsId" value="40000166990" />
+    <input type="hidden" name="userGoodsCarList[0].goodsName" value="酷派 C106-8（4G智能手机）  32G" />
+    <input type="hidden" name="userGoodsCarList[0].prodBossCode" value="2016021610001321" />
+    <input type="hidden" name="userGoodsCarList[0].goodsBuyNum" value="1" />
+    <input type="hidden" name="userGoodsCarList[0].categoryId" value="1940" />
+    <input type="hidden" name="userGoodsCarList[0].isChecked" value="Y"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsSkuImgUrl" value="T1oNdTByxT1R49Ip6K.jpeg"/>
+    <input type="hidden" name="orderDetailContract.serialNumber"/>
+    <input type="hidden" name="orderDetailContract.eparchyCode"/>
+    <input type="hidden" name="orderDetailContract.contractId"/>
+    <input type="hidden" name="orderDetailContract.contractName"/>
+    <input type="hidden" name="orderDetailContract.sumLimitPrice"/>
+    <input type="hidden" name="orderDetailContract.discount"/>
+    <input type="hidden" name="orderDetailContract.operFee"/>
+    <input type="hidden" name="orderDetailContract.productId"/>
+    <input type="hidden" name="orderDetailContract.productName"/>
+    <input type="hidden" name="orderDetailContract.packageId"/>
+    <input type="hidden" name="orderDetailContract.elementId"/>
+    <input type="hidden" name="orderDetailContract.elementName"/>
+    <input type="hidden" name="orderDetailContract.promisionDuration"/>
+    <input type="hidden" name="orderDetailContract.depositFee"/>
+    <input type="hidden" name="orderDetailContract.advancePay"/>
+    <input type="hidden" name="orderDetailContract.productTypeCode"/>
+    <input type="hidden" name="orderDetailContract.fee1"/>
+    <input type="hidden" name="orderDetailContract.fee2"/>
+    <input type="hidden" name="orderDetailContract.fee3"/>
+    <input type="hidden" name="orderDetailContract.fee4"/>
+</form>
+</body>
+	
+</html>

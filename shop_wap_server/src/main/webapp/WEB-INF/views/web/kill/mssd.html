@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <!--
+ * the head of wap
+ * 
+ * @author: yunzhi li
+ * @version: 2016/10/27 10:56
+ *           Id
+-->
+<title>秒杀晒单页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<!-- css -->
+<!-- css eg -->
+<!--<link rel="stylesheet" type="text/css" href="./css/xxx/xxxx.css"/>-->
+<link rel="stylesheet" type="text/css" href="./lib/normalize-6.0.0.min.css"/>
+<link rel="stylesheet" type="text/css" href="./css/wap.css"/>
+
+<!-- JS -->
+<!-- JS eg -->
+<!--<script type="text/javascript" src="./js/xxx/xxxx.js"></script>-->
+<script type="text/javascript" src="./lib/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="./lib/flexible-0.3.2/flexible.js"></script>
+<script type="text/javascript" src="./js/comm.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <a href="javascript:void(0)" class="gz-btn" onclick="toggleModal('tk_modal')">活动规则</a>
+        <div class="con">
+            <div class="con-title">绑定支付分享至朋友圈即可参与</div>
+            <div class="con-veiw">
+                <div class="con-list clearfix">
+                    <dl>
+                        <dt><img src="./images/protu.png" /></dt>
+                        <dd>
+                            <h4>iPhone7手机</h4>
+                            <span>4.7英寸</span>
+                            <span>32G内存</span>
+                            <span>A10芯片</span>
+                            <p class="font-red">价值:<strong class="f40">4799</strong>元</p>
+                        </dd>
+                    </dl>
+                    <div class="scroll-con" id="demo">
+                        <div class="qimo">
+                            <div id="demo1">
+                                <ul>
+                                    <li>用户成功秒杀到iPHONE7！</li>
+                                    <li>139****1111用户成功秒杀到iPHONE7</li>
+                                </ul>
+                            </div>
+                            <div id="demo2"></div>
+                        </div>
+                    </div>
+                    <div class="ms-con">
+                        <p class="ms-title">每周四更新秒杀机型，敬请期待... ...</p>
+                        <p class="font-red f40 pl40">我已成功秒杀，<br>小伙伴们一起来参与吧！</p>
+                        <p class="font-purple pt5 pl40">秒杀机型：iPhone7手机 秒杀价格：1元</p>
+                    </div>
+                    <div class="ms-btn">
+                        <a href="javascript:void(0)" class="btn btn-center btn-red" onclick="toggleModal('tk_modal2')">点我去秒杀</a>
+                    </div>
+                </div>
+            </div>
+            <div class="con-tabs">
+                <table id="table">
+                    <tr>
+                        <th>秒杀时间</th>
+                        <th>机型</th>
+                        <th>秒杀价</th>
+                        <th>数量</th>
+                    </tr>
+                    <tr>
+                        <td>4月25日15:00</td>
+                        <td>Iphone7</td>
+                        <td>1元</td>
+                        <td>3台</td>
+                    </tr>
+                    <tr>
+                        <td>5月2日15:00</td>
+                        <td>荣耀V9</td>
+                        <td>1元</td>
+                        <td>3台</td>
+                    </tr>
+                    <tr>
+                        <td>5月9日15:00</td>
+                        <td>Iphone6</td>
+                        <td>1元</td>
+                        <td>3台</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="silder-con"><img src="./images/silder.jpg" /></div>
+    </div>
+    <script type="text/javascript">
+        var intDiff = parseInt(36000); //倒计时总秒数量
+        function timer(intDiff) {
+            window.setInterval(function() {
+                var hour = 0,
+                    minute = 0,
+                    second = 0; //时间默认值		
+                if (intDiff > 0) {
+                    day = Math.floor(intDiff / (60 * 60 * 24));
+                    hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                    minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                    second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                }
+                if (minute <= 9) minute = '0' + minute;
+                if (second <= 9) second = '0' + second;
+                $('#hour_show').html('<s id="h"></s>' + hour + '');
+                $('#minute_show').html('<s></s>' + minute + '');
+                $('#second_show').html('<s></s>' + second + '');
+                intDiff--;
+            }, 1000);
+        }
+        $(function() {
+            timer(intDiff);
+        });
+        //文字滚动
+        var demo = document.getElementById("demo");
+        var demo1 = document.getElementById("demo1");
+        var demo2 = document.getElementById("demo2");
+        demo2.innerHTML = document.getElementById("demo1").innerHTML;
+
+        function Marquee() {
+            if (demo.scrollLeft - demo2.offsetWidth >= 0) {
+                demo.scrollLeft -= demo1.offsetWidth;
+            } else {
+                demo.scrollLeft++;
+            }
+        }
+        var myvar = setInterval(Marquee, 30);
+        demo.onmouseout = function() {
+            myvar = setInterval(Marquee, 30);
+        }
+        demo.onmouseover = function() {
+            clearInterval(myvar);
+        }
+    </script>
+    <!--弹框 start-->
+    <!--活动规则弹框 start-->
+<div id="tk_modal" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal')"></a>
+        <div class="modal_content">
+            <h4>活动规则</h4>
+            <div class="modal-con">
+                <p>1.本活动仅限湖南移动客户参与；</p>
+                <p>2.终端秒杀需要求客户在网1年以上，即2016年4月1日前入网；</p>
+                <p>3.成功秒杀的客户必须在30分钟之内完成付款，否则秒杀机会将失效；</p>
+                <p>4.用户参与秒杀必须通过和包绑卡才能参与秒杀；</p>
+                <p>5.用户参与秒杀必须分享本次活动至朋友圈才能参与秒杀；</p>
+                <p>6.用户成功秒杀并支付后，晒单可获赠50M国内流量。 </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--活动规则弹框 end-->
+
+<!--温馨提示一弹框 start-->
+<div id="tk_modal2" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal2')"></a>
+        <div class="modal_content">
+            <h4>温馨提示</h4>
+            <div class="modal-con">
+                <p>恭喜您！已成功秒杀xxxxx手机，请于30 分钟以内付款完毕，同时系统将下发短信 进行告知，感谢支持湖南移动。
+                </p>
+            </div>
+            <div class="tk-btn">
+                <a href="javascript:void(0)" class="btn btn-ls">取消</a>
+                <a href="javascript:void(0)" class="btn btn-red">立即付款</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--温馨提示一弹框 end-->
+
+<!--温馨提示二弹框 start-->
+<div id="tk_modal3" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal3')"></a>
+        <div class="modal_content">
+            <h4>温馨提示</h4>
+            <div class="modal-con">
+                <p>手慢啦~，宝贝被抢光啦~更多精彩活动 请至活动专区。</p>
+            </div>
+            <div class="tk-btn">
+                <a href="javascript:void(0)" class="btn btn-ls">取消</a>
+                <a href="javascript:void(0)" class="btn btn-red">立即前往</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--温馨提示二弹框 end-->
+
+<!--温馨提示三弹框 start-->
+<div id="tk_modal4" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal4')"></a>
+        <div class="modal_content">
+            <h4>温馨提示</h4>
+            <div class="modal-con">
+                <p>本次活动需分享后才能参与秒杀活动哦！</p>
+            </div>
+            <div class="tk-btn">
+                <a href="javascript:void(0)" class="btn btn-ls">取消</a>
+                <a href="javascript:void(0)" class="btn btn-red">立即分享</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--温馨提示三弹框 end-->
+
+<!--温馨提示四弹框 start-->
+<div id="tk_modal5" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal5')"></a>
+        <div class="modal_content">
+            <h4>温馨提示</h4>
+            <div class="modal-con">
+                <p>参加本次活动需进行和包绑卡，请先绑卡 再来参与哦！</p>
+            </div>
+            <div class="tk-btn">
+                <a href="javascript:void(0)" class="btn btn-ls">取消</a>
+                <a href="javascript:void(0)" class="btn btn-red">立即绑卡</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--温馨提示四弹框 end-->
+
+<!--温馨提示五弹框 start-->
+<div id="tk_modal6" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal6')"></a>
+        <div class="modal_content">
+            <h4>温馨提示</h4>
+            <div class="modal-con">
+                <p>您在网年限不满1年哦，还不能参与本次活动。</p>
+            </div>
+            <div class="tk-btn">
+                <a href="javascript:void(0)" class="btn btn-center btn-red">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--温馨提示五弹框 end-->
+
+<!--温馨提示六弹框 start-->
+<div id="tk_modal7" class="mask-layer">
+    <div class="modal">
+        <a href="javascript:void(0)" class="btn-close" onclick="toggleModal('tk_modal7')"></a>
+        <div class="modal_content">
+            <h4>温馨提示</h4>
+            <div class="modal-con">
+                <p class="t-center">您已绑卡成功!</p>
+            </div>
+            <div class="tk-btn">
+                <a href="javascript:void(0)" class="btn btn-center btn-red">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--温馨提示六弹框 end-->
+    <!--弹框 end-->
+</body>
+
+</html>

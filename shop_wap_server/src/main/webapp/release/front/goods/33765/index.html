@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- 商品浏览统计嵌入代码 start -->
+<meta name="WT.si_n" content="登录" />
+<meta name="WT.si_x" content="开始登录" />
+<meta name="WT.si_n" content="购物流程" />
+<meta name="WT.si_x" content="机型详情" />
+<meta name="WT.pn_sku" content="33765" />
+<meta name="WT.pn" content="华为 ATU-TL10 3G+32G （深度合作型）" />
+<meta name="WT.pc" content="裸机" />
+<meta name="WT.tx_s" content="999.00" >
+<!-- 商品浏览统计嵌入代码 end -->
+
+<title>湖南移动商城</title>
+<link rel="stylesheet" type="text/css" href="/shop/static/css/swiper.min.css"  />
+<link rel="stylesheet" type="text/css" href="/shop/static/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="/shop/static/css/media-style.css"/>
+<link rel="stylesheet" type="text/css" href="/shop/static/css/list.css"/>
+<script>
+    var goodsSkuAttrList = [{"goodsAttrName":"内存","goodsAttrValue":"128G","goodsId":33765,"goodsSkuAttrId":33767,"goodsSkuId":33766,"prodAttrId":34535,"prodAttrValueId":33757},{"goodsAttrName":"颜色","goodsAttrValue":"白色","goodsId":33765,"goodsSkuAttrId":33768,"goodsSkuId":33766,"prodAttrId":100001,"prodAttrValueId":33758},{"goodsAttrName":"内存","goodsAttrValue":"256G","goodsId":33765,"goodsSkuAttrId":33786,"goodsSkuId":33785,"prodAttrId":34535,"prodAttrValueId":33783},{"goodsAttrName":"颜色","goodsAttrValue":"黑色","goodsId":33765,"goodsSkuAttrId":33787,"goodsSkuId":33785,"prodAttrId":100001,"prodAttrValueId":33784}];
+    var strGoodsSkuAttrDistinctListList = [[{"goodsAttrName":"内存","goodsAttrValue":"128G","goodsId":33765,"goodsSkuAttrId":33767,"goodsSkuId":33766,"prodAttrId":34535,"prodAttrValueId":33757},{"goodsAttrName":"内存","goodsAttrValue":"256G","goodsId":33765,"goodsSkuAttrId":33786,"goodsSkuId":33785,"prodAttrId":34535,"prodAttrValueId":33783}],[{"goodsAttrName":"颜色","goodsAttrValue":"白色","goodsId":33765,"goodsSkuAttrId":33768,"goodsSkuId":33766,"prodAttrId":100001,"prodAttrValueId":33758},{"goodsAttrName":"颜色","goodsAttrValue":"黑色","goodsId":33765,"goodsSkuAttrId":33787,"goodsSkuId":33785,"prodAttrId":100001,"prodAttrValueId":33784}]];
+    var strGoodsSkuProdAttrList = [{"goodsAttrName":"内存","goodsAttrValue":"128G","goodsId":33765,"goodsSkuAttrId":33767,"goodsSkuId":33766,"prodAttrId":34535,"prodAttrValueId":33757},{"goodsAttrName":"颜色","goodsAttrValue":"白色","goodsId":33765,"goodsSkuAttrId":33768,"goodsSkuId":33766,"prodAttrId":100001,"prodAttrValueId":33758}];
+    var baseProject = "/shop/";
+</script>
+<script type="text/javascript" src="/shop/static/js/qm/insdc_w2.js"></script>
+<script type="text/javascript" src="/shop/static/js/jquery/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/shop/static/js/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/shop/static/js/nav.js"></script>
+<script type="text/javascript" src="/shop/static/js/public.js"></script>
+<script type="text/javascript" src="/shop/static/js/owl.carousel.js"></script> 
+<script type="text/javascript" src="/shop/static/js/swiper.min.js"></script> 
+<script type="text/javascript" src="/shop/static/js/modal.js"></script>
+<script type="text/javascript" src="/shop/static/js/changetab.js"></script>
+    <script type="text/javascript" src="/shop/static/js/artTemplate/dist/template.js"></script>
+    <script type="text/javascript" src="/shop/static/js/load.js"></script>
+    <script type="text/javascript" src="/shop/static/js/goods/phoneGoodsItem.js"></script>
+    <script type="text/javascript" src="/shop/static/js/goods/goodsAppraise.js"></script>
+    <script type="text/javascript" src="/shop/static/js/goods/goodsActivity.js"></script>
+	<script type="text/javascript" src="/shop/static/js/qm/insdc_w2.js"></script> 
+	
+</head>
+<body>
+<!--弹出层-->
+<button id="alertMsgInfoBT" type="button" class="buy" data-toggle="modal" data-target="#alertMsgInfo" aria-hidden="true"
+        style="display:none;"></button>
+<div class="modal fade  modal-prompt" id="alertMsgInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modle-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only" id="btnClose">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="pop_670_cont" id="alertMsgInfo_content"></div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:void(0);" class="btn btn-blue btn-2x" onclick="hideMe();">确  定</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- 担保号码 start -->
+<div class="modal fade  modal-prompt" id="surenoPop"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modle-center">
+        <div class="modal-content" style="width: 400px;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only" id="btnClose">Close</span></button>
+        <h5 class="modal-title" id="myModalLabel">99合约担保号码</h5>
+    </div>
+    <div class="tabcon-content tabcon-cl tab-fd" style="margin-left: 20px;">
+        <span style="display: block;height: 35px;line-height: 35px;margin: 10px auto;">
+            <label class="box-jl01 box-con" style="float: left;width: 90px;">手机号码：</label>
+            <input name="sureno" id="sureno" type="tel" class="sr-sk" maxlength="11" style="height: 35px;line-height: 35px;float: left;width: 150px;">
+         </span>
+    </div>
+    <div style="line-height: 35px;margin: 10px 0 10px 20px;">
+        <label class="box-jl01 box-con" style="float: left;width: 90px;">动态码：&nbsp;&nbsp;&nbsp;</label>
+        <input value="" id="surenoCode" name="surenoCode" type="tel" class="sr-sk" maxlength="6" style="height: 35px;line-height: 35px;float: left;margin-right: 10px;width: 150px;">
+        <button class=" btn btn-blue" id="btnSendCodeSureno" onclick="sendSmsCode();">获取动态码</button>
+    </div> 
+    <p style="line-height: 35px;margin: 10px auto 10px 30px;" id="alertSureno_content">请确保你输入的担保号码能收到短信！</p>
+    <div class="modal-footer">
+        <a href="javascript:void(0);" class="btn btn-blue btn-2x" onclick="checkSmsCode();">确  定</a>
+    </div>
+	</div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!--  担保号码 end -->
+
+<!-- /.modal -->
+<script type="text/javascript">
+
+    function __innnerMessageShow() {
+        if ($("#alertMsgInfo").is(":hidden")) {
+            $("#alertMsgInfo").modal("show");
+        }
+    }
+
+    function __innnerErrorMessageShow() {
+        if ($("#alertMsgInfoError").is(":hidden")) {
+            $("#alertMsgInfoError").modal("show");
+        }
+    }
+
+    /**
+     * 提示消息
+     * @param obj
+     */
+    function showAlert(obj,callback) {
+        $("#alertMsgInfo_content").html(obj);
+        __innnerMessageShow();
+        if (typeof callback === "function") {
+            setTimeout(callback, 5000);
+        }
+    }
+
+    function hideMe() {
+        $("#alertMsgInfo_content").html("");
+        $("#btnClose").click();
+    }
+
+</script>
+<input type="hidden" id="goodsId" value="33765" />
+<div class="top container">
+  <div class="header sub-title"><a onclick="window.history.back()" href="javascript:void(0)" class="icon-left"></a>
+    <h1>商品详情</h1>
+    <!--购物车链接 开始-->
+    <a href="javascript:;" class="icon-right"></a><a href="/shop/cart/linkToCartList" class="icon-top-cart"><span class="badge" id="shopCateGoodsNum">0</span></a>
+    <script type="text/javascript">
+        $(function(){
+            loadShopCateGoodsNum();
+        });
+        function loadShopCateGoodsNum() {
+            $.ajax({
+                url: baseProject + "cart/getCartCount",
+                dataType: "json",
+                success: function(data){
+                    $("#shopCateGoodsNum").html(data);
+                }
+            });
+        }
+    </script>
+   </div>
+    <!--购物车链接 结束-->
+<ul class="nav-slide">
+	<li class="nav-arrow"></li>
+	<li><a href="/shop/"><i class="icon-nav-wt-home"></i>移动商城</a></li>
+	<!--<li><a href="号卡.html"><i class="icon-nav-lh"></i>靓号</a></li>-->
+	<li><a href="/shop/goodsQuery/linkToGoodsList?categoryId=10000001&queryListpageCode=PHONE_LISTPAGE_B2C&queryListpageId=100"><i class="icon-nav-home"></i>选机中心</a></li>
+	<li><a href="/shop/goods/T1SaETBsZT_RXx1p6K.html"><i class="icon-nav-ss"></i>最新活动</a></li>
+	<!--<li class="share"><a href="#"><i class="icon-nav-fx"></i>分享</a></li>-->
+	<li><a href="/shop/memberInfo/toMemberCenter"><i class="icon-nav-wo"></i>个人中心</a></li>
+</ul>
+  <div class="modal-bg"></div>
+</div>
+<div class="container"> 
+<!--商品展示图 -->
+<div class="swiper-container swiper-container-sub" id="swiper-sub">
+    <div class="swiper-wrapper">
+    </div>
+     <div class="pagination"></div>
+</div>
+
+<script type="text/javascript">
+var mySwiper = new Swiper('#swiper-sub',{
+    pagination: '#swiper-sub .pagination',
+	loop:true,
+	grabCursor: true,
+	autoplay:3000,
+	autoplayDisableOnInteraction:false,
+	
+  })
+</script>
+
+<div class="sp-lr">
+<!--商品信息--> 
+ <!--倒计时 -->
+	<!--倒计时 -->
+<div class="time-djs" style="display:none;"><!--活动没开始时clss bg-gray 为灰色 -->
+  <div class="djs-jg">
+    <span class="ms-jg" id="killPrice">￥999</span>
+    <div class="djs-fj">
+      <del id="delPrice">￥3508</del>
+      <span id="kkNum">已抢828件</span>
+    </div>
+  </div>
+  <div class="djs-list">
+    <div class="date-time"><span id="mark_date">距结束</span>：<span id="c_time">--:--:--</span></div>
+    
+ 
+    <div class="ms-st"> 
+        <span class="sd-rt" id="num_notice">
+            已抢80%
+        </span>
+        <span class="new-gd-bar">
+            <span id="percent_notice" style="width:80%;"></span>
+        </span>
+    </div>
+    
+  </div>
+</div>
+ <div class="sp-bt sp06">
+      <div class="sp-title" id="goodsNameDesc">华为 ATU-TL10 3G+32G （深度合作型）&nbsp;&nbsp;<strong>周六加班测试产品</strong></div>
+      <div class="sp-lz"> <a class="sp-sc" href="javascript:;" id="attention"  otype="button" otitle="关注" oarea="终端"><span></span>关注</a> </div>
+      <div class="sp-jg" id="goodsPriceDesc">商城价：<strong id="goodsPrice">￥999.00 </strong><small>元 </small><!-- <small>(最高返999元话费)</small> -->
+      </div>
+      <div class="sp-jg" id="deposit" style="display:none;">订　金：<strong id="deposit_num"> </strong><small>元 </small></div>
+ </div>
+ <script type="text/javascript">
+var intDiff;
+function timer(intDiffIn){
+	intDiff=intDiffIn;
+	timeOff();
+	setInterval(timeOff, 1000);
+} 
+
+function timeOff(){
+	if(intDiff<1){
+		window.location.reload();
+	}
+	var hour=0,
+		minute=0,
+		second=0;//时间默认值		
+	if(intDiff > 0){
+		day = Math.floor(intDiff / (60 * 60 * 24));
+		hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+	}
+	if (minute <= 9) minute = '0' + minute;
+	if (second <= 9) second = '0' + second;
+	$("#c_time").html(day+"天"+hour+"小时"+minute+"分钟"+second+"秒");
+	intDiff--;
+	}
+</script>
+<!-- 担保机构 -->
+ <div class="dt-extend">
+      <div class="up-border"></div>
+      <div class="up-decorate-left"></div>
+      <div class="up-decorate-right"></div>
+      <div class="wrapper">
+        <div id="item-extend-info" class="lgray">
+          <div class="guarantee">
+             <div class="guarantee-item"> <span class="img"></span> <span class="text">和包支付</span> </div> 
+            <div class="guarantee-item"> <span class="img"></span> <span class="text">湖南区内包邮</span> </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="sp-lc sp-dy sp-dr">
+    <h2>购买方式</h2>
+    <ul id="goodsTypeUl" class="sp-button dt-btn01">
+        <li class="list-active"><a id="selectBarePhone" goodsType="2">裸机</a></li>
+        <li><a id="selectContractPhone" goodsType="1">合约机</a></li>
+    </ul>
+</div>
+
+<!--合约办理手机号码-->
+<div id="phoneNumDiv" class="order-info4 order-bg sp-lc hide">
+    <div class="tabcon-content tabcon-cl tab-fd">
+        <span>
+            <label class="box-con">办理手机号码：</label>
+            <input id="phoneNumber" type="tel" class="sr-sk" maxlength="11">
+            <a id="chooseContractBtn" data-toggle="modal" data-target="#myModal2" href="javascript:void(0);" class="btn-md btn-blue">选择合约套餐</a>
+        </span>
+    </div>
+</div>
+
+<div id="table_select_contact_info" class="sp-fr hide">
+     <table cellpadding="0" cellspacing="0" class="sp-table" >
+          <tr>
+            <th>赠送款（总）</th>
+            <th>除末月外每月<br/>赠送额</th>
+            <th>末月<br/>赠送额</th>
+            <th>月保底<br/>消费</th>
+            <th>协议期</th>
+          </tr>
+          <tr class="active">
+            <td id="tdGiftFee"></td>
+            <td id="tdFee1"></td>
+            <td id="tdFee2"></td>
+            <td id="tdConsume"></td>
+            <td id="tdContractMonth"></td>
+          </tr>
+    </table>
+</div>
+
+<div class="sp-pj sp03 sp04 sp-top" id="redBag" style="display:none">
+      <div class="pj-ft">
+      <label><input type="checkbox" checked="checked" class="pj-box"><span class="hb-icon"></span>
+      <span class="hb-red">红包抵扣<span id="redBagNum">0</span>元</span>
+      </label>
+      </div>
+    </div>
+
+<!-- 商品评价 -->
+<!-- 条件选择 -->      
+<div class="sp-pj sp03 sp04 sp-top"><a class="spcs"><div class="pj-ft" id="chooseGoodsAttr"  otype="button" otitle="选择 颜色分类 优惠活动" oarea="终端">选择 颜色分类 优惠活动</div> <i class="sp-icon"></i></a></div>
+<!-- 查看图文详情 -->
+<div class="sp-pj sp03 sp04 sp-top"><a id="GoodsXQing"  data-target="#myModal6" data-toggle="modal"><div class="pj-ft"  otype="button" otitle="查看图文详情" oarea="终端">查看图文详情</div><i class="sp-icon"></i></a></div>
+<!-- 商家信息 -->
+<a href="#"><div class="sp-lc sub-shop-mes">
+	<span class="sp-phone">客服电话：110</span>
+</div></a>
+<!-- 图文详情弹框 -->
+<!--查看图文详情 begin-->
+<div class="modal fade modal-hy" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content modal-content">
+      <div class="top container">
+        <div class="header sub-title"><!--<a class="icon-left icon-home icon2"></a>--><a data-dismiss="modal" aria-label="Close" class="icon-left"></a>
+          <h1>商品详情</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div id="outer" class="tab-dt">
+          <ul id="tab" class="tab-con">
+            <li class="current" otype="button" otitle="商品介绍" oarea="终端">商品介绍</li>
+            <li  otype="button" otitle="规格参数" oarea="终端">规格参数</li>
+            <li  otype="button" otitle="包装及售后" oarea="终端">包装及售后</li>
+          </ul>
+          <div id="content" class="tab-dr" style="padding-top:43px">
+            <ul style="display:block;" class="noclass" id="prodDesc">
+             
+            </ul>
+            <ul class="noclass">
+              <table cellpadding="0" cellspacing="0" class="cs-list">
+                <col span="1" class="spcs-list">
+                <thead>
+                  <tr>
+                    <th colspan="2" >基本参数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </ul>
+            <ul class="noclass">
+              <table cellpadding="0" cellspacing="0" class="cs-list cl-list02">
+                <col span="1" class="tab-list">
+                <tbody>
+                  <tr>
+                    <td class="tr-wz">包装及售后</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </ul>
+          </div>
+        </div>
+      </div> 
+      <script>
+	$(document).ready(function(){
+			var $li = $('#tab li');
+			var $ul = $('#content ul');
+						
+			$li.click(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			});
+	});
+</script> 
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!--查看图文详情 end--> 
+<!-- 颜色，内存，套餐选择弹框 --> 
+   <div class="xzcs">
+      <div class="xz-con">
+        <dl class="xz-dr">
+          <dt><img src="" /></dt>
+          <dd>
+            <h2>华为 ATU-TL10 3G+32G （深度合作型）&nbsp;&nbsp;<strong>周六加班测试产品</h2>
+            <span class="xz-text">库存 : <strong id="stockNum"><img src="/shop/static/images/shop-images/loading4.gif" /></strong></span></dd>
+          <span class="xz-text">总价 : <strong id="goodsPrice_2">￥999.00</strong></span>
+          </dd>
+        </dl>
+        <span> 
+								   <div class="sp-lc">
+								    <h2>内存：</h2>
+									<ul class="sp-button" id="attrUl_34535" attrName="内存"
+										goodsAttrName="attr_">
+											    <li class="on" id="attrLi_33757">
+											         <a href="javascript:void(0);" 
+											            goodsSkuId=33766
+											            prodAttrId=34535
+											            prodAttrValueId=33757 
+											            onclick="checkSelect('33757');">128G
+											         </a>
+											     </li>
+											    <li id="attrLi_33783">
+											        <a href="javascript:void(0);" 
+											           goodsSkuId=33785
+											           prodAttrId=34535
+											           prodAttrValueId=33783 
+											        onclick="checkSelect('33783');">256G</a>
+											     </li>
+									</ul>
+									</div> 
+								   <div class="sp-lc">
+								    <h2>颜色：</h2>
+									<ul class="sp-button" id="attrUl_100001" attrName="颜色"
+										goodsAttrName="attr_">
+											    <li class="on" id="attrLi_33758">
+											         <a href="javascript:void(0);" 
+											            goodsSkuId=33766
+											            prodAttrId=100001
+											            prodAttrValueId=33758 
+											            onclick="checkSelect('33758');">白色
+											         </a>
+											     </li>
+											    <li id="attrLi_33784">
+											        <a href="javascript:void(0);" 
+											           goodsSkuId=33785
+											           prodAttrId=100001
+											           prodAttrValueId=33784 
+											        onclick="checkSelect('33784');">黑色</a>
+											     </li>
+									</ul>
+									</div> 
+        
+		</span>
+        <div class="sp-lc" id="numberSelectDiv" style="display:none;">
+          <h2>选择数量</h2>
+          <div id="jr" class="sp-button sp-number">
+            <input class="min" name="" type="button" value="-" onclick="phoneGMNumber('del')"/>
+            <input class="text_box" id="phoneGMNum" name="" type="text" value="1" onblur="phoneGMNumber(this)"/>
+            <input class="add" name="" type="button" value="+" onclick="phoneGMNumber('add')" />
+          </div>
+          <div class="kc-item">库存：<em id="stockNum_2">0</em></div>
+        </div>
+      </div>
+      <div class="sub-bnt">
+          <a id="confirmAttrBtn" href="javascript:;" class="btn btn-rose btn-block">确定</a>
+      </div>
+    </div>
+    <script>
+   
+    </script>
+    <div class="model-bg"></div>
+  </div>
+</div>
+
+<!-- 商品评价 -->
+<!-- 合约详情 -->
+<div class="modal fade modal-hy" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="modalLoad" class="loading loading-sub load-box">
+        <div class="loading-logo"></div>
+        <div class="loader"></div>
+        <div id="reload" style="margin-top:-10px;">数据加载中，请稍候……</div>
+    </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="top container">
+                <div class="header sub-title"><a data-dismiss="modal" aria-label="Close" class="icon-left"></a>
+                    <h1>选择合约套餐</h1>
+                </div>
+            </div>
+            <div class="container hy-content">
+                <div class="sp-lc sp-dy">
+                    <h2>合约：</h2>
+                    <ul id="contractUl" class="sp-button dt-btn01">
+                        <script id="contractProducts" type="text/html">
+                            {{each contractProducts as contract i}}
+                                <li {{if i == 0}}class="list-active"{{/if}}>
+                                    <a href="#">{{contract.PRODUCT_NAME}}</a>
+                                    <input name="contractId" type="hidden" value="{{contract.PRODUCT_ID}}"/>
+                                </li>
+                            {{/each}}
+                        </script>
+                    </ul>
+                </div>
+                <div class="sp-lc sp-dy sp-dr">
+                    <h2>合约时长：</h2>
+                    <ul id="monthUl" class="sp-button dt-btn01">
+                        <script id="contractMonths" type="text/html">
+                            {{each contractMonths as contractMonth i}}
+                                {{if contractMonth.ATTR_FIELD_CODE != '36'}}
+                                    <li {{if i == 0}}class="list-active"{{/if}}>
+                                        <a href="#">{{contractMonth.ATTR_FIELD_NAME}}</a>
+                                        <input type="hidden" name="contractMonth" value="{{contractMonth.ATTR_FIELD_CODE}}"/>
+                                    </li>
+                                {{/if}}
+                            {{/each}}
+                        </script>
+                    </ul>
+                </div>
+                <div class="sp-lc sp-dy sp-dr">
+                    <h2>套餐：</h2>
+                    <ul id="voiceUl" class="sp-button dt-btn01">
+                        <script id="voices" type="text/html">
+                            {{each voices as voice i}}
+                                <li {{if i == 0}}class="list-active"{{/if}}>
+                                    <a href="#">{{voice.PRODUCT_NAME}}</a>
+                                    <input type="hidden" name="productId" value="{{voice.PRODUCT_ID}}"/>
+                                </li>
+                            {{/each}}
+                        </script>
+                    </ul>
+                </div>
+                <ul id="elementUl" class="nav nav-tabs hy-tabs" id="mytabs" role="tablist">
+                    <script id="elements" type="text/html">
+                        {{each elements as element i}}
+                            <li {{if i == 0}}class="active"{{/if}}>
+                                <a href="#">{{element.ELEMENT_NAME}}</a>
+                                <input type="hidden" name="elementId" value="{{element.ELEMENT_ID}}"/>
+                                <input type="hidden" name="elementName" value="{{element.ELEMENT_NAME}}"/>
+                                <input type="hidden" name="packageId" value="{{element.PACKAGE_ID}}"/>
+                                <input type="hidden" name="price" value="{{element.PRICE}}"/>
+                                <input type="hidden" name="exist" value="{{element.EXIST}}"/>
+                            </li>
+                        {{/each}}
+                    </script>
+                </ul>
+                <div class="tab-content hy-tab-content" id="tab-content02">
+                    <div id="contractResultDiv" class="tab-pane active hide">
+                        <div class="sp-content">
+                            <table  width="100%" class="cs-list cl-list02 cs-list03"  border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>赠送款（总）</td>
+                                    <td id="giftFeeTd"></td>
+                                </tr>
+                                <tr>
+                                    <td>除末月外每月赠送额</td>
+                                    <td id="fee1Td"></td>
+                                </tr>
+                                <tr>
+                                    <td>末月赠送额</td>
+                                    <td id="fee2Td"></td>
+                                </tr>
+                            </table>
+                            <div class="qrhy-text">
+                                <p>说明：赠送话费仅供参考，具体以赠送到账为准。</p>
+                                <span><i class="mu-icon"></i>温馨提示：</span>
+                                <p>1、合约机不支持7天无理由退货服务，有质量问题只换机（换机流程同普通购机一致）、保修；</p>
+                                <p>2、如遇质量问题，客户需前往供货商制定的售后点开具售后证明，凭售后证明前往当地移动营业厅重绑手机串码（IMEI），或拨打10086转派相关人员重绑手机串码，绑定后，即可继续享受预存返还。</p>
+                                <p>3、客户参与合约购机，话费返还上限为<strong class="qrhy-text01">80元</strong>；即客户办理合约购机后，返还话费低于80元，按照实际金额返还；高于80元，则最高返还80元。</p>
+                                <p>4、若客户已办理套餐预约业务，则预约套餐生效次月合约套餐才可生效（如，若客户当月做套餐变更，套餐次月生效；合约套餐则需次次月生效。）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="affix menu-btn menu-tab">
+                <div class="container mu-cn">
+                    <div class="mu-cn">
+                        <a id="returnContractBtn" href="#" class="btn btn-blue btn-block btn-fl btn-jl" data-dismiss="modal">返　回</a>
+                        <a id="confirmContractBtn" href="#" class="btn btn-rose btn-block btn-fl btn-jl"  data-dismiss="modal">确　定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+  
+<script>
+      /**
+	   *搜索店铺的联系方式：qq
+	   */
+	  $.post(baseProject+"shop/getShopOnlineServiceList",{"shopId":100000006077},function(data){
+		  if(data[0])
+		  {
+	       var connection = "http://wpa.qq.com/msgrd?v=3&uin="+ data[0].onlineServiceNumber+"&site=qq&menu=yes";
+	       $("#connectionStation").attr("href",connection);
+		  }
+	  });
+</script>
+
+<div class="fix-br">
+  <div class="affix foot-menu">
+    <nav class="container active-fix">
+      <div class="btn-other"><!--<a href="#" class="ac-link active"><span></span>导购</a>-->
+         
+         <a href="http://www.jiathis.com/share?uid=902817" class="ac-link ac-link04"  otype="button" otitle="分享" oarea="终端" ><span></span>分享</a>
+         
+         
+         <a id="connectionStation" href="#" class="ac-link ac-link01"  otype="button" otitle="客服" oarea="终端" ><span></span>客服</a>
+         
+        <div class="more-box"></div>
+      </div>
+      <div class="btn-right">
+      <!-- 裸机/配件  -->
+      <a id="buyBtn" href="javascript:void(0);" class="btn btn-rose hide"  otype="button" otitle="立即购买" oarea="终端">立即购买</a>
+              <a id="addCartBtn" href="javascript:void(0);" class="btn btn-blue hide"  otype="button" otitle="加入购物车" oarea="终端">加入购物车</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- 获取营销活动信息 -->
+
+
+<form id="goodsBuyForm" action="/shop/goodsBuy/linkToConfirmOrder" method="post">
+    <input type="hidden" name="userGoodsCarList[0].shopName" value="蜜蜂和熊"/>
+    <input type="hidden" name="userGoodsCarList[0].shopId" value="100000006077"/>
+    <input type="hidden" name="userGoodsCarList[0].shopTypeId" value="5"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsShortDesc" value="周六加班测试产品" />
+    <input type="hidden" name="userGoodsCarList[0].goodsSkuId"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsStandardAttr"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsStandardAttrId"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsSalePrice" value=""/>
+    <input type="hidden" name="userGoodsCarList[0].goodsType" value="2"/>
+    <input type="hidden" name="userGoodsCarList[0].goodsId" value="33765" />
+    <input type="hidden" name="userGoodsCarList[0].goodsName" value="华为 ATU-TL10 3G+32G （深度合作型）" />
+    <input type="hidden" name="userGoodsCarList[0].prodBossCode" value="test" />
+    <input type="hidden" name="userGoodsCarList[0].goodsBuyNum" value="1" />
+    <input type="hidden" name="userGoodsCarList[0].categoryId" value="27215" />
+    <input type="hidden" name="userGoodsCarList[0].isChecked" value="Y"/>
+    <input type="hidden" id="marketId" name="marketId" value=""/>
+    <input type="hidden" name="orderDetailContract.serialNumber"/>
+    <input type="hidden" name="orderDetailContract.eparchyCode"/>
+    <input type="hidden" name="orderDetailContract.contractId"/>
+    <input type="hidden" name="orderDetailContract.contractName"/>
+    <input type="hidden" name="orderDetailContract.sumLimitPrice"/>
+    <input type="hidden" name="orderDetailContract.discount"/>
+    <input type="hidden" name="orderDetailContract.operFee"/>
+    <input type="hidden" name="orderDetailContract.productId"/>
+    <input type="hidden" name="orderDetailContract.productName"/>
+    <input type="hidden" name="orderDetailContract.packageId"/>
+    <input type="hidden" name="orderDetailContract.elementId"/>
+    <input type="hidden" name="orderDetailContract.elementName"/>
+    <input type="hidden" name="orderDetailContract.promisionDuration"/>
+    <input type="hidden" name="orderDetailContract.depositFee"/>
+    <input type="hidden" name="orderDetailContract.advancePay"/>
+    <input type="hidden" name="orderDetailContract.productTypeCode"/>
+    <input type="hidden" name="orderDetailContract.fee1"/>
+    <input type="hidden" name="orderDetailContract.fee2"/>
+    <input type="hidden" name="orderDetailContract.fee3"/>
+    <input type="hidden" name="orderDetailContract.fee4"/>
+</form>
+     <!-- ajax登录拦截js -->
+     <script type="text/javascript" charset="utf-8" src="/shop/static/js/ajaxSetup.js"></script>
+</body>
+	<script type="text/javascript" src="/shop/static/js/qm/insdc_w2.js"></script> 
+	
+</html>

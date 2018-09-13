@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <title>首页</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
+  <link rel="stylesheet" href="../css/mescroll.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/wap.css" />
+  <script type="text/javascript" src="../js/flexible.js"></script>
+  <script type="text/javascript" src="../js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../js/swiper.min.js"></script>
+  <script type="text/javascript" src="../js/modal.js"></script>
+  <script type="text/javascript" src="../js/choNumber.js"></script>
+</head>
+
+<body class="bg-white">
+<div class="container">
+  <div class="common-navbar-wrap">
+    <div class="common-navbar ">
+      <div class="navbar-left">
+        <a href="javascript:history.back();" class="arrow-left">
+          返回</a>
+        <a class="arrow-refresh" href="#">刷新</a>
+      </div>
+
+      <h3 class="navbar-title">选号中心</h3>
+
+
+    </div>
+  </div>
+
+  <div class="common-content">
+    <div class="common-content-fixed">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../demoimages/20180630010029032.jpg" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="../demoimages/xianxiaquka.jpg" alt="">
+          </div>
+
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="index-4f">
+        <a href="#">
+          <img src="../images/index-card.png" alt="">
+          <p>号卡激活</p>
+        </a>
+        <a href="#">
+          <img src="../images/index-sub.png" alt="">
+          <p>副卡绑定</p>
+        </a>
+        <a href="#">
+          <img src="../images/index-fav.png" alt="">
+          <p>我的收藏</p>
+        </a>
+        <a href="#">
+          <img src="../images/index-order.png" alt="">
+          <p>我的订单</p>
+        </a>
+      </div>
+
+      <img class="index-lianhao" src="../images/15.jpg" alt="">
+      <div class="flex-h mt20 mb20 ">
+        <p class="index-f-w">1</p>
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+
+        <p class="index-f-w">-</p>
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+        <p class="index-f-w">-</p>
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+        <input type="tel" maxlength="1" class="input-f-index">
+        <a class="btn btn-middle btn-border btn-border-blue" href="">按位筛选</a>
+        <a class="btn btn-middle btn-lingtblue" href="">清空</a>
+
+
+      </div>
+
+      <div class="ChoseNum   ">
+        <div class="clearfix">
+          <a class="btn btn-middle btn-lingtblue  w-30 pull-right  mr20" href="">换一批</a>
+          <ul class="Choseder ">
+            <li class="Chodertitle" otitle="按地市" otype="button">
+              <h2>按地市
+                <em class="li_arrow"></em>
+              </h2>
+            </li>
+            <!-- <li class="Chodertitle" otitle="按号段" otype="button">
+        <h2>按号段
+            <em class="li_arrow"></em>
+        </h2>
+    </li>
+    <li class="Chodertitle" otitle="按位数" otype="button">
+        <h2>按位数
+            <em class="li_arrow"></em>
+        </h2>
+    </li>
+    <li class="Chodertitle" otitle="剔数字" otype="button">
+        <h2>剔数字
+            <em class="li_arrow"></em>
+        </h2>
+    </li>
+    <li class="Chodertitle" id="liother" otitle="其他" otype="button">
+        <h2>其他
+            <em class="li_arrow"></em>
+        </h2>
+    </li> -->
+          </ul>
+        </div>
+        <div class="ChoseList hide">
+          <div class="Listshow hide">
+            <div class="ListAddr ListCity clearfix">
+              <a href="javascript:adValue('city','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+              <a href="javascript:adValue('city','200');" id="cityABn_200" val="200" otitle="广州" otype="button">广州</a>
+              <a href="javascript:adValue('city','755');" id="cityABn_755" val="755" otitle="深圳" otype="button">深圳</a>
+              <a href="javascript:adValue('city','769');" id="cityABn_769" val="769" otitle="东莞" otype="button">东莞</a>
+              <a href="javascript:adValue('city','757');" id="cityABn_757" val="757" otitle="佛山" otype="button">佛山</a>
+              <a href="javascript:adValue('city','754');" id="cityABn_754" val="754" otitle="汕头" otype="button">汕头</a>
+              <a href="javascript:adValue('city','756');" id="cityABn_756" val="756" otitle="珠海" otype="button">珠海</a>
+              <a href="javascript:adValue('city','752');" id="cityABn_752" val="752" otitle="惠州" otype="button">惠州</a>
+              <a href="javascript:adValue('city','760');" id="cityABn_760" val="760" otitle="中山" otype="button">中山</a>
+              <a href="javascript:adValue('city','750');" id="cityABn_750" val="750" otitle="江门" otype="button">江门</a>
+              <a href="javascript:adValue('city','759');" id="cityABn_759" val="759" otitle="湛江" otype="button">湛江</a>
+              <a href="javascript:adValue('city','663');" id="cityABn_663" val="663" otitle="揭阳" otype="button">揭阳</a>
+              <a href="javascript:adValue('city','668');" id="cityABn_668" val="668" otitle="茂名" otype="button">茂名</a>
+              <a href="javascript:adValue('city','751');" id="cityABn_751" val="751" otitle="韶关" otype="button">韶关</a>
+              <a href="javascript:adValue('city','763');" id="cityABn_763" val="763" otitle="清远" otype="button">清远</a>
+              <a href="javascript:adValue('city','758');" id="cityABn_758" val="758" otitle="肇庆" otype="button">肇庆</a>
+              <a href="javascript:adValue('city','766');" id="cityABn_766" val="766" otitle="云浮" otype="button">云浮</a>
+              <a href="javascript:adValue('city','753');" id="cityABn_753" val="753" otitle="梅州" otype="button">梅州</a>
+              <a href="javascript:adValue('city','762');" id="cityABn_762" val="762" otitle="河源" otype="button">河源</a>
+              <a href="javascript:adValue('city','768');" id="cityABn_768" val="768" otitle="潮州" otype="button">潮州</a>
+              <a href="javascript:adValue('city','660');" id="cityABn_660" val="660" otitle="汕尾" otype="button">汕尾</a>
+              <a href="javascript:adValue('city','662');" id="cityABn_662" val="662" otitle="阳江" otype="button">阳江</a>
+            </div>
+            <div class="Numberbtn">
+              <button type="button" class="reset" onclick="adValue('city','');" otitle="按地市-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+              <button type="button" id="cityBn" class="confirm qrynumbtn" otitle="按地市-确认" otype="button">确&nbsp;&nbsp;&nbsp;认</button>
+            </div>
+            <div class="boxbg"></div>
+          </div>
+          <div class="Listshow hide" style="display: none;">
+            <div class="ListAddr ListBrand clearfix">
+              <div class="ListAll">
+                <div class="otherTit unlimited clearfix">
+                  <a href="javascript:adValue('numPeriod','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+                  <a href="javascript:adValue('numPeriod','134');" id="numPeriodABn_134" class="" val="134" otitle="134" otype="button">134</a>
+                  <a href="javascript:adValue('numPeriod','135');" id="numPeriodABn_135" class="" val="135" otitle="135" otype="button">135</a>
+                  <a href="javascript:adValue('numPeriod','136');" id="numPeriodABn_136" class="" val="136" otitle="136" otype="button">136</a>
+                  <a href="javascript:adValue('numPeriod','137');" id="numPeriodABn_137" class="" val="137" otitle="137" otype="button">137</a>
+                  <a href="javascript:adValue('numPeriod','138');" id="numPeriodABn_138" class="" val="138" otitle="138" otype="button">138</a>
+                  <a href="javascript:adValue('numPeriod','139');" id="numPeriodABn_139" class="" val="139" otitle="139" otype="button">139</a>
+                  <a href="javascript:adValue('numPeriod','150');" id="numPeriodABn_150" class="" val="150" otitle="150" otype="button">150</a>
+                  <a href="javascript:adValue('numPeriod','151');" id="numPeriodABn_151" class="" val="151" otitle="151" otype="button">151</a>
+                  <a href="javascript:adValue('numPeriod','152');" id="numPeriodABn_152" class="" val="152" otitle="152" otype="button">152</a>
+                  <a href="javascript:adValue('numPeriod','157');" id="numPeriodABn_157" class="" val="157" otitle="157" otype="button">157</a>
+                  <a href="javascript:adValue('numPeriod','158');" id="numPeriodABn_158" class="" val="158" otitle="158" otype="button">158</a>
+                  <a href="javascript:adValue('numPeriod','159');" id="numPeriodABn_159" class="" val="159" otitle="159" otype="button">159</a>
+                  <a href="javascript:adValue('numPeriod','182');" id="numPeriodABn_182" class="" val="182" otitle="182" otype="button">182</a>
+                  <a href="javascript:adValue('numPeriod','183');" id="numPeriodABn_183" class="" val="183" otitle="183" otype="button">183</a>
+                  <a href="javascript:adValue('numPeriod','188');" id="numPeriodABn_188" class="" val="188" otitle="188" otype="button">188</a>
+                </div>
+              </div>
+            </div>
+            <div class="Numberbtn">
+              <button type="button" class="reset" onclick="adValue('numPeriod','');" otitle="按号段-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+              <button type="button" id="brandBn" class="confirm qrynumbtn" otitle="按号段-确认" otype="button">确&nbsp;&nbsp;&nbsp;认</button>
+            </div>
+            <div class="boxbg"></div>
+          </div>
+          <div class="Listshow hide" style="display: none;">
+            <div class="ListAddr ListTao clearfix">
+              <a href="javascript:adValue('countNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+              <a href="javascript:adValue('countNum','45');" id="countNum_45" class="" val="45" otitle="0较多" otype="button"> 0较多</a>
+              <a href="javascript:adValue('countNum','46');" id="countNum_46" class="" val="46" otitle="1较多" otype="button"> 1较多</a>
+              <a href="javascript:adValue('countNum','47');" id="countNum_47" class="" val="47" otitle="2较多" otype="button"> 2较多</a>
+              <a href="javascript:adValue('countNum','48');" id="countNum_48" class="" val="48" otitle="3较多" otype="button"> 3较多</a>
+              <a href="javascript:adValue('countNum','49');" id="countNum_49" class="" val="49" otitle="4较多" otype="button"> 4较多</a>
+              <a href="javascript:adValue('countNum','50');" id="countNum_50" class="" val="50" otitle="5较多" otype="button"> 5较多</a>
+              <a href="javascript:adValue('countNum','51');" id="countNum_51" class="" val="51" otitle="6较多" otype="button"> 6较多</a>
+              <a href="javascript:adValue('countNum','52');" id="countNum_52" class="" val="52" otitle="7较多" otype="button"> 7较多</a>
+              <a href="javascript:adValue('countNum','53');" id="countNum_53" class="" val="53" otitle="8较多" otype="button"> 8较多</a>
+              <a href="javascript:adValue('countNum','54');" id="countNum_54" class="" val="54" otitle="9较多" otype="button"> 9较多</a>
+            </div>
+            <div class="Numberbtn">
+              <button type="button" class="reset" onclick="adValue('countNum','');" otitle="按套餐-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+              <button type="button" id="countNumBn" class="confirm qrynumbtn" otitle="按套餐-确认" otype="button">确&nbsp;&nbsp;&nbsp;认</button>
+            </div>
+            <div class="boxbg"></div>
+          </div>
+          <div class="Listshow hide" style="display: none;">
+            <div class="ListAddr ListPay clearfix">
+              <a href="javascript:adValue('exceptNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+              <a href="javascript:adValue('exceptNum','55');" id="exceptNum_55" class="" val="55" otitle="剔除0" otype="button"> 剔除0</a>
+              <a href="javascript:adValue('exceptNum','56');" id="exceptNum_56" class="" val="56" otitle="剔除1" otype="button"> 剔除1</a>
+              <a href="javascript:adValue('exceptNum','57');" id="exceptNum_57" class="" val="57" otitle="剔除2" otype="button"> 剔除2</a>
+              <a href="javascript:adValue('exceptNum','58');" id="exceptNum_58" class="" val="58" otitle="剔除3" otype="button"> 剔除3</a>
+              <a href="javascript:adValue('exceptNum','59');" id="exceptNum_59" class="" val="59" otitle="剔除4" otype="button"> 剔除4</a>
+              <a href="javascript:adValue('exceptNum','60');" id="exceptNum_60" class="" val="60" otitle="剔除5" otype="button"> 剔除5</a>
+              <a href="javascript:adValue('exceptNum','61');" id="exceptNum_61" class="" val="61" otitle="剔除6" otype="button"> 剔除6</a>
+              <a href="javascript:adValue('exceptNum','62');" id="exceptNum_62" class="" val="62" otitle="剔除7" otype="button"> 剔除7</a>
+              <a href="javascript:adValue('exceptNum','63');" id="exceptNum_63" class="" val="63" otitle="剔除8" otype="button"> 剔除8</a>
+              <a href="javascript:adValue('exceptNum','64');" id="exceptNum_64" class="" val="64" otitle="剔除9" otype="button"> 剔除9</a>
+            </div>
+            <div class="Numberbtn">
+              <button type="button" class="reset" onclick="adValue('priceNum','');" otitle="按价格-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+              <button type="button" id="exceptNumBn" class="confirm qrynumbtn" otitle="按价格-确认" otype="button">确&nbsp;&nbsp;&nbsp;认</button>
+            </div>
+            <div class="boxbg"></div>
+          </div>
+          <!-- 其他筛选条件-->
+          <div class="Listshow hide" id="Liother" style="display: none;">
+            <div class="ListAddr ListScreen ListOther clearfix">
+              <div class="otherTop">
+                <span class="text_gray go_back">&lt;&nbsp;返回</span>
+                <button type="button" class="confirm_b qrynumbtn" otitle="按其他-确认" otype="button">确定</button>
+                <h2>其他</h2>
+              </div>
+              <div class="otherTit numberOrder clearfix">
+                <a href="javascript:;">按尾数
+                  <i class="arrow_d arrow_up"></i>
+                </a>
+                <a href="javascript:;">规则号
+                  <i class="arrow_d"></i>
+                </a>
+                <a href="javascript:;">星座号
+                  <i class="arrow_d"></i>
+                </a>
+              </div>
+              <ol class="ListAllBox">
+                <li>
+                  <div class="ListAll ListLastNum">
+                    <div class="otherTit unlimited clearfix">
+                      <a href="javascript:adValue('lastNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+                      <a href="javascript:adValue('lastNum','35');" id="lastNum_35" class="" val="35" otitle="00" otype="button"> 00</a>
+                      <a href="javascript:adValue('lastNum','36');" id="lastNum_36" class="" val="36" otitle="11" otype="button"> 11</a>
+                      <a href="javascript:adValue('lastNum','37');" id="lastNum_37" class="" val="37" otitle="22" otype="button"> 22</a>
+                      <a href="javascript:adValue('lastNum','38');" id="lastNum_38" class="" val="38" otitle="33" otype="button"> 33</a>
+                      <a href="javascript:adValue('lastNum','39');" id="lastNum_39" class="" val="39" otitle="44" otype="button"> 44</a>
+                      <a href="javascript:adValue('lastNum','40');" id="lastNum_40" class="" val="40" otitle="55" otype="button"> 55</a>
+                      <a href="javascript:adValue('lastNum','41');" id="lastNum_41" class="" val="41" otitle="66" otype="button"> 66</a>
+                      <a href="javascript:adValue('lastNum','42');" id="lastNum_42" class="" val="42" otitle="77" otype="button"> 77</a>
+                      <a href="javascript:adValue('lastNum','43');" id="lastNum_43" class="" val="43" otitle="88" otype="button"> 88</a>
+                      <a href="javascript:adValue('lastNum','44');" id="lastNum_44" class="" val="44" otitle="99" otype="button"> 99</a>
+                    </div>
+                  </div>
+                  <div class="Numberbtn others">
+                    <button type="button" class="reseted clearfix" onclick="adValue('lastNum','');" otitle="按其他-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+                  </div>
+                </li>
+                <li class="hide">
+                  <div class="ListAll ListRules">
+                    <div class="otherTit unlimited clearfix">
+                      <a href="javascript:adValue('ruleNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+                      <a href="javascript:adValue('ruleNum','2');" id="ruleNum_2" class="" val="2" otitle="AAA" otype="button"> AAA</a>
+                      <a href="javascript:adValue('ruleNum','7');" id="ruleNum_7" class="" val="7" otitle="尾数88" otype="button"> 尾数88</a>
+                      <a href="javascript:adValue('ruleNum','4');" id="ruleNum_4" class="" val="4" otitle="无4号码" otype="button"> 无4号码</a>
+                      <a href="javascript:adValue('ruleNum','9');" id="ruleNum_9" class="" val="9" otitle="ABC" otype="button"> ABC</a>
+                      <a href="javascript:adValue('ruleNum','3');" id="ruleNum_3" class="" val="3" otitle="ABAB" otype="button"> ABAB</a>
+                      <a href="javascript:adValue('ruleNum','1');" id="ruleNum_1" class="" val="1" otitle="AABB" otype="button"> AABB</a>
+                      <a href="javascript:adValue('ruleNum','8');" id="ruleNum_8" class="" val="8" otitle="ABCD" otype="button"> ABCD</a>
+                      <a href="javascript:adValue('ruleNum','10');" id="ruleNum_10" class="" val="10" otitle="AABAA" otype="button"> AABAA</a>
+                    </div>
+                  </div>
+                  <div class="Numberbtn others">
+                    <button type="button" class="reseted clearfix" onclick="adValue('ruleNum','');" otitle="按其他-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+                  </div>
+                </li>
+                <li class="hide">
+                  <div class="ListAll ListXZNum">
+                    <div class="otherTit unlimited clearfix">
+                      <a href="javascript:adValue('constellationNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+                      <a href="javascript:adValue('constellationNum','5');" id="constellationNum_5" class="" val="5" otitle="水瓶" otype="button">
+                        水瓶</a>
+                      <a href="javascript:adValue('constellationNum','6');" id="constellationNum_6" class="" val="6" otitle="双鱼" otype="button">
+                        双鱼</a>
+                      <a href="javascript:adValue('constellationNum','11');" id="constellationNum_11" class="" val="11" otitle="白羊" otype="button">
+                        白羊</a>
+                      <a href="javascript:adValue('constellationNum','12');" id="constellationNum_12" class="" val="12" otitle="金牛" otype="button">
+                        金牛</a>
+                      <a href="javascript:adValue('constellationNum','27');" id="constellationNum_27" class="" val="27" otitle="双子" otype="button">
+                        双子</a>
+                      <a href="javascript:adValue('constellationNum','28');" id="constellationNum_28" class="" val="28" otitle="巨蟹" otype="button">
+                        巨蟹</a>
+                      <a href="javascript:adValue('constellationNum','29');" id="constellationNum_29" class="" val="29" otitle="狮子" otype="button">
+                        狮子</a>
+                      <a href="javascript:adValue('constellationNum','30');" id="constellationNum_30" class="" val="30" otitle="处女" otype="button">
+                        处女</a>
+                      <a href="javascript:adValue('constellationNum','31');" id="constellationNum_31" class="" val="31" otitle="天秤" otype="button">
+                        天秤</a>
+                      <a href="javascript:adValue('constellationNum','32');" id="constellationNum_32" class="" val="32" otitle="天蝎" otype="button">
+                        天蝎</a>
+                      <a href="javascript:adValue('constellationNum','33');" id="constellationNum_33" class="" val="33" otitle="射手" otype="button">
+                        射手</a>
+                      <a href="javascript:adValue('constellationNum','34');" id="constellationNum_34" class="" val="34" otitle="魔羯" otype="button">
+                        魔羯</a>
+                    </div>
+                  </div>
+                  <div class="Numberbtn others">
+                    <button type="button" class="reseted clearfix" onclick="adValue('constellationNum','');" otitle="按其他-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+                  </div>
+                </li>
+              </ol>
+              <div class="otherTit numberOrderTwo clearfix">
+                <a href="javascript:;">吉祥号
+                  <i class="arrow_d"></i>
+                </a>
+                <a href="javascript:;">爱情号
+                  <i class="arrow_d"></i>
+                </a>
+              </div>
+              <ol class="ListAllBox hide">
+                <li class="hide">
+                  <div class="ListAll ListLuckyNum">
+                    <div class="otherTit unlimited numberLong clearfix">
+                      <a href="javascript:adValue('luckyNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+                      <a href="javascript:adValue('luckyNum','15');" id="luckyNum_15" class="" val="15" otitle="一路发168" otype="button"> 一路发168</a>
+                      <a href="javascript:adValue('luckyNum','13');" id="luckyNum_13" class="" val="13" otitle="发发发888" otype="button"> 发发发888</a>
+                      <a href="javascript:adValue('luckyNum','14');" id="luckyNum_14" class="" val="14" otitle="六六大顺666" otype="button"> 六六大顺666</a>
+                      <a href="javascript:adValue('luckyNum','16');" id="luckyNum_16" class="" val="16" otitle="要发要发1818" otype="button"> 要发要发1818</a>
+                      <a href="javascript:adValue('luckyNum','17');" id="luckyNum_17" class="" val="17" otitle="我要发518" otype="button"> 我要发518</a>
+                      <a href="javascript:adValue('luckyNum','18');" id="luckyNum_18" class="" val="18" otitle="久久不忘99" otype="button"> 久久不忘99</a>
+                    </div>
+                  </div>
+                  <div class="Numberbtn others">
+                    <button type="button" class="reseted clearfix" onclick="adValue('luckyNum','');" otitle="按其他-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+                  </div>
+                </li>
+                <li class="hide">
+                  <div class="ListAll ListLoveNum">
+                    <div class="otherTit unlimited numberLong clearfix">
+                      <a href="javascript:adValue('loveNum','');" class="curr" val="" otitle="不限" otype="button">不限</a>
+                      <a href="javascript:adValue('loveNum','19');" id="loveNum_19" class="" val="19" otitle="我爱你520" otype="button"> 我爱你520</a>
+                      <a href="javascript:adValue('loveNum','20');" id="loveNum_20" class="" val="20" otitle="一生一世1314" otype="button"> 一生一世1314</a>
+                      <a href="javascript:adValue('loveNum','21');" id="loveNum_21" class="" val="21" otitle="亲亲我吧7758" otype="button"> 亲亲我吧7758</a>
+                      <a href="javascript:adValue('loveNum','22');" id="loveNum_22" class="" val="22" otitle="我要亲你5170" otype="button"> 我要亲你5170</a>
+                      <a href="javascript:adValue('loveNum','23');" id="loveNum_23" class="" val="23" otitle="我爱上你5230" otype="button"> 我爱上你5230</a>
+                      <a href="javascript:adValue('loveNum','24');" id="loveNum_24" class="" val="24" otitle="生生世世3344" otype="button"> 生生世世3344</a>
+                      <a href="javascript:adValue('loveNum','25');" id="loveNum_25" class="" val="25" otitle="不见不散8983" otype="button"> 不见不散8983</a>
+                      <a href="javascript:adValue('loveNum','26');" id="loveNum_26" class="" val="26" otitle="爱你一生2013" otype="button"> 爱你一生2013</a>
+                    </div>
+                  </div>
+                  <div class="Numberbtn others">
+                    <button type="button" class="reseted clearfix" onclick="adValue('loveNum','');" otitle="按其他-重置" otype="button">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="Leftbg"></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  <div id="mescroll" class="mescroll">
+
+    <ul id="newsList" class="content list-phone">
+      <li>
+        <p class="list-phone-txt">
+          <span>178</span>
+          <span>431</span>
+          <span class="font-red">7820</span>
+        </p>
+        <p class="list-phone-txt2 text-center">茂名</p>
+        <p class="flex1">万能副卡</p>
+        <a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a>
+        <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a>
+      </li>
+      <li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li>
+      <li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li><li><p class="list-phone-txt"><span>178</span><span>431</span><span class="font-red">7820</span></p><p class="list-phone-txt2 text-center">茂名</p><p class="flex1">万能副卡</p><a class="btn btn-middle btn-border btn-border-blue " href="javascript:;">购买</a> <a class="btn btn-middle btn-border btn-border-rose" href="javascript;">收藏</a></li>
+
+    </ul>
+    <!-- you can put some other DOMs here, it won't affect the scrolling -->
+  </div>
+
+  <!-- <div class="common-footer-wrap">
+      <div class="common-footer-fix">
+          <a href="#" class="wap-button-img" otitle="页面底部-在线客服" otype="button">
+              <p class="kefu-svg"></p>
+              <span>在线客服</span>
+          </a>
+      </div>
+
+  </div> -->
+
+</div>
+
+<div class="modal fade gz-modal" id="gz-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-header-title">请确认自提点信息</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info">
+          <p class="pl20">#店铺名称#</p>
+          <p class="pl20">#店铺地址第一行#</p>
+          <p class="pl20">#店铺地址第二行#</p>
+          <p class="pl20">#店铺联系信息#</p>
+        </div>
+      </div>
+      <div class="modal-footer clearfix">
+        <a data-dismiss="modal" class="modal-btn font-blue ">不自提，送货上门</a>
+        <a data-dismiss="modal" class="modal-btn font-blue ">营业厅自提</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script src="../js/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mescroll-option.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript">
+    $(function () {
+
+        var swiper = new Swiper('.swiper-container', {
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+
+        $('.common-select a').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+
+        })
+
+        $('.btnNext').bind('click', function (e) {
+
+            $('#gz-modal').modal();
+
+        });
+    })
+</script>
+
+</body>
+
+</html>

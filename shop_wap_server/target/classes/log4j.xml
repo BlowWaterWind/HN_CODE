@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - Copyright 1999-2011 Alibaba Group. - - Licensed under the Apache License, 
+	Version 2.0 (the "License"); - you may not use this file except in compliance 
+	with the License. - You may obtain a copy of the License at - - http://www.apache.org/licenses/LICENSE-2.0 
+	- - Unless required by applicable law or agreed to in writing, software - 
+	distributed under the License is distributed on an "AS IS" BASIS, - WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. - See the 
+	License for the specific language governing permissions and - limitations 
+	under the License. -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd/MM/yy hh:mm:ss:sss z}] %t %5p %c{2}: %m%n" />
+		</layout>
+	</appender>
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/ecslog/shopwap/business.log" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %C{6} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="FILE_DEBUG" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/ecslog/shopwap/debug.log" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %C{6} (%F:%L) - %m%n" />
+		</layout>
+	</appender>	
+	<appender name="FILE_WARNING" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/ecslog/shopwap/logsystem_warning.log" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d - %m%n" />
+		</layout>
+		<param name="BufferedIO" value="true" />
+      	<!-- 8K为一个写单元 -->
+		<param name="BufferSize" value="8192" />
+	</appender>
+
+	<!--log4j.properties配置模式不能用，与dubbo冲突-->
+	<!--<appender name="KAFKA_APPENDRE"-->
+		<!--class="org.apache.log4j.KafkaServiceAppender">-->
+		<!--<layout class="org.apache.log4j.PatternLayout">-->
+			<!--<param name="ConversionPattern" value="%d - %m%n" />-->
+		<!--</layout>-->
+		<!---->
+		<!---->
+		<!--&lt;!&ndash; weblog=web层日志； servicelog=dubbo服务层日志&ndash;&gt;-->
+		<!--<param name="flag" value="weblog"/>-->
+		<!--<param name="topic" value="ecs-logstash-weblog"/>-->
+		<!--<param name="zkConnect" value="10.154.73.83:2181,10.154.73.84:2181,10.154.73.85:2181,10.154.73.86:2181,10.154.73.87:2181"/>-->
+		<!--<param name="metadataBrokerList" value="10.154.73.83:9092,10.154.73.84:9092,10.154.73.85:9092,10.154.73.86:9092,10.154.73.87:9092"/>-->
+	<!--</appender>-->
+
+<!-- 
+	<appender name="WARNING_APPENDRE"
+		class="com.ai.billing.common.logger.appender.WebServiceAppender">
+		<param name="endpoint"
+			value="http://10.174.44.27:8070/mc/services/WebService4Boss?wsdl" />
+		<param name="moId" value="33014608" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d - %m%n" />
+		</layout>
+		<param name="errorFile" value="logs/error.log"/>
+		<param name="batch" value="true"/>
+		<param name="batchSize" value="10"/>
+	</appender>
+ 	-->
+ 
+	<!-- 设置日志输出的格式 <layout class="org.apache.log4j.PatternLayout"> 参数都以%开始后面不同的参数代表不同的格式化信息： 
+		%c 输出所属类的全名，可在修改为 %d{Num} ,Num类名输出的范围 如："org.apache.elathen.ClassName",%C{2}将输出elathen.ClassName 
+		%d 输出日志时间其格式为 %d{yyyy-MM-dd HH:mm:ss,SSS}，可指定格式 如 %d{HH:mm:ss} %l 输出日志事件发生位置，包括类目名、发生线程，在代码中的行数 
+		%n 换行符 %m 输出代码指定信息，如info(“message”),输出message %p 输出优先级，即 FATAL ,ERROR 等 %r 
+		输出从启动到显示该log信息所耗费的毫秒数 %t 输出产生该日志事件的线程名The default pattern: Date Priority 
+		[Category] Message\n <param name="ConversionPattern" value="%d{ABSOLUTE} 
+		%-5p [%c{1}] %m%n"/> </layout> -->
+
+	<appender name="WEB_DB_LOG" class="org.apache.log4j.NormalRollingFileAppender">
+		<param name="useDatePattern" value="true" />
+		<param name="file" value="/ecslog/shopwap/webDb.log" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="200MB" />
+		<param name="MaxBackupIndex" value="30"/>
+		<param name="BufferedIO" value="false" />
+		<param name="BufferSize" value="8192" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="FLOW_LOG" class="org.apache.log4j.NormalRollingFileAppender">
+		<param name="useDatePattern" value="true" />
+		<param name="file" value="/ecslog/shopwap/flowLog.log" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="200MB" />
+		<param name="MaxBackupIndex" value="10"/>
+		<param name="BufferedIO" value="false" />
+		<param name="BufferSize" value="8192" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+	<logger name="flowLog" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="FLOW_LOG" />
+	</logger>
+
+	<logger name="webDbLog" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="WEB_DB_LOG" />
+	</logger>
+
+	<logger name="warning" additivity="false">
+		<level value="warn"/>
+		<appender-ref ref="FILE_WARNING" />
+	</logger>
+
+	<logger name="business_web_log" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="KAFKA_APPENDRE" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="business_service_log" additivity="false">
+		<level value="INFO"/>
+		<appender-ref ref="KAFKA_APPENDRE" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE_DEBUG" />
+	</root>
+
+</log4j:configuration>

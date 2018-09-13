@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>PC-web</display-name>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name></web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>OPTIONS</http-method>
+			<http-method>TRACE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:/META-INF/spring/spring-context*.xml</param-value>
+	</context-param>
+
+	<!--<context-param>-->
+		<!--<param-name>com.sun.faces.sendPoweredByHeader</param-name>-->
+		<!--<param-value>false</param-value>-->
+	<!--</context-param>-->
+
+	<listener>
+		<listener-class>com.ai.ecs.ecm.mall.wap.platform.listener.WebContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!--Head过滤-->
+	<filter>
+		<filter-name>HeadFilter</filter-name>
+		<filter-class>com.ai.ecs.ecm.mall.wap.platform.servlet.HeadFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HeadFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- XSS -->
+	<filter>
+		<filter-name>XssFilter</filter-name>
+		<filter-class>com.ai.ecs.ecm.mall.wap.platform.servlet.XssFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>XssFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- Apache Shiro -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 全局过滤器 -->
+	<filter>
+		<filter-name>global-filter</filter-name>
+		<filter-class>com.ai.ecs.ecm.mall.wap.platform.servlet.GlobalFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>global-filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- MVC Servlet -->
+	<servlet>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:/META-INF/spring/spring-mvc*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- CKFinder -->
+	<!--<servlet> <servlet-name>CKFinderConnectorServlet</servlet-name> <servlet-class>com.ai.ecs.mall.platform.servlet.CKFinderConnectorServlet</servlet-class> 
+		<init-param> <param-name>XMLConfig</param-name> <param-value>/WEB-INF/ckfinder.xml</param-value> 
+		</init-param> <init-param> <param-name>debug</param-name> <param-value>false</param-value> 
+		</init-param> <init-param> <param-name>configuration</param-name> <param-value>com.ai.ecs.mall.platform.servlet.CKFinderConfig</param-value> 
+		</init-param> <load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> 
+		<servlet-name>CKFinderConnectorServlet</servlet-name> <url-pattern>/static/ckfinder/core/connector/java/connector.java</url-pattern> 
+		</servlet-mapping> -->
+	<!--<filter> <filter-name>FileUploadFilter</filter-name> <filter-class>com.ckfinder.connector.FileUploadFilter</filter-class> 
+		<init-param> <param-name>sessionCookieName</param-name> <param-value>JSESSIONID</param-value> 
+		</init-param> <init-param> <param-name>sessionParameterName</param-name> 
+		<param-value>jsessionid</param-value> </init-param> </filter> <filter-mapping> 
+		<filter-name>FileUploadFilter</filter-name> <url-pattern>/static/ckfinder/core/connector/java/connector.java</url-pattern> 
+		</filter-mapping> -->
+	<!-- Userfiles download -->
+
+	<!-- Validate code -->
+	<servlet>
+		<servlet-name>ValidateCodeServlet</servlet-name>
+		<servlet-class>com.ai.ecs.ecm.mall.wap.platform.servlet.ValidateCodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ValidateCodeServlet</servlet-name>
+		<url-pattern>/servlet/validateCodeServlet</url-pattern>
+	</servlet-mapping>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/WEB-INF/tags/sys</taglib-uri>
+            <taglib-location>/WEB-INF/tags/sys</taglib-location>
+        </taglib>
+    </jsp-config>
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/error/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/error/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/views/error/403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/WEB-INF/views/error/400.jsp</location>
+	</error-page>
+</web-app>

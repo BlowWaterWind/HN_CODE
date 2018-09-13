@@ -1,0 +1,115 @@
+/*图片上传*/
+.fl{
+    float:left;
+}
+.list_img{
+    overflow:hidden;
+    padding:0 10px 20px 10px;
+}
+.list_img:last-child{
+    padding-right:0;
+}
+.z_photo li{
+    float:left;
+    width:33.33%;
+    padding:10px 0;
+}
+.z_photo .z_file{position:relative;}
+.z_photo .z_file .file{
+    width:80px;
+    height:80px;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 100;
+}
+.z_photo .up-li{
+    position: relative;
+}
+.z_photo .up-li .close-upimg{
+    position: absolute;
+    width:20px !important;
+    height:20px !important;
+    top:0;
+     animation: fade-in;
+    animation-duration: 2s;
+    -webkit-animation:fade-in 2s;
+    margin-left:70px;
+    display:block;
+    z-index:10;
+}
+.z_photo .up-img{
+    display: block;
+    width: 80px !important;
+    height:80px !important;
+}
+.z_photo .loading{
+    background: url("../../images/broadBand/loading.gif") no-repeat center;
+    width:32px !important;
+    height:32px !important;
+    background-size:32px;
+}
+.z_photo .z_file .add-img{
+    display: block;
+    margin-top:10px;
+    width:80px !important;
+    height:80px !important;
+    border:1px solid #8f8f8f;
+    text-align:center;
+    font-size:60px;
+    line-height:70px;
+    font-weight:normal;
+    color:#666;
+}
+.z_photo .up-opcity{
+    opacity: 0;
+}
+.z_photo .img-name-p {
+    display: none;
+ }
+ @keyframes fade-in {  
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}  
+@-webkit-keyframes fade-in {
+    0% {opacity: 0;}   
+    100% {opacity: 1;}  
+} 
+ /*遮罩层样式*/
+.imgup-mask{
+    z-index:9999;
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+}
+.imgup-mask .mask-content{
+    max-width:640px;
+    width:80%;
+    position: absolute;
+    padding-top:10px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius:5px;
+    font-size:14px;
+    text-align:center;
+}
+.imgup-mask .mask-content .del-p{font-size:12px;padding:10px 10px 20px 10px;}
+.imgup-mask .mask-content .check-p{
+     border-top:1px solid #ddd;
+     height:36px;line-height:36px;
+      font-size:14px;
+}
+.imgup-mask .mask-content .check-p span{
+    display: inline-block;
+}
+.imgup-mask .mask-content .check-p span:not(:last-child){
+    border-right: 1px solid #ddd;
+}
+.imgup-mask .mask-content  .wsdel-ok{color:#008cdc;}

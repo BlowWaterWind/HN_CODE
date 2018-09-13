@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+	default-lazy-init="true">
+    
+    <description>TFS Configuration</description>
+    <!-- 加载配置属性文件 -->
+	<context:property-placeholder
+		ignore-unresolvable="true" location="classpath:tfs-config.properties" />
+    
+    <bean id="tfsManager" class="com.taobao.common.tfs.DefaultTfsManager" init-method="init">
+        <!-- 整个进程中系统最多等待多少个请求,取决于你有多少个线程并发的请求TFS -->
+        <property name="maxWaitThread">
+            <value>${tfs.client.maxWaitThread}</value>
+        </property>
+        <!-- 单个请求最大的等待时间(ms) 超过这个时间放弃这次请求 -->
+        <property name="timeout">
+            <value>${tfs.client.timeout}</value>
+        </property>
+        <!-- Tfs master nameserver ip address <value>169.254.167.100:8108</value> -->
+        <property name="nsip">
+            <value>${tfs.client.nsip}</value>
+        </property>
+        <!-- TFS 集群的编号,这个编号只是一种参考,系统初始化的时候会从ns上取,取不到才用本地设置的! -->
+        <property name="tfsClusterIndex">
+            <value>${tfs.client.tfsClusterIndex}</value>
+        </property>
+        <!-- TFS在读取文件的时候会缓存block所在的数据服务器ip,这个参数配置了最多缓存的记录个数! -->
+        <property name="maxCacheItemCount">
+            <value>${tfs.client.maxCacheItemCount}</value>
+        </property>
+        <!-- 上一项缓存最大有效的时间(ms)! -->
+        <property name="maxCacheTime">
+            <value>${tfs.client.maxCacheTime}</value>
+        </property>
+        <property name="namespace">
+            <value>${tfs.client.namespace}</value>
+        </property>
+    </bean>
+</beans>

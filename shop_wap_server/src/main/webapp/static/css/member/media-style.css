@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+@media (max-width: 639px) {
+	.share-box,.sum-box,.reach-box{width:100%;left:0; margin-left:0}
+	.header {width:100%}
+	.slider-product-page {width:100% !important; height:220px !important; background-color:#fff}
+.slider-product-page > div {width:100% !important}
+.slider-product-page .slides {width:220 !important; height:220px !important;left:50%; margin-left:-110px}
+.slider-product-page .slides > div {width:100% !important; height:220px !important;}
+.slider-product-page .slides img {height:220px !important; width:220px !important}
+.list-con li{ padding-right:7px !important;}
+/*.list-con li .badge{ right:-10px !important;}*/
+.tab-hf{ padding-left:6px;}
+.lljc {left:0; margin-left:inherit}
+}
+@media (max-width: 320px) {
+	#main,.container {max-width:320px}
+}
+@media (min-width: 640px) {
+	.modal {width:640px; margin-left:auto; margin-right:auto}
+}

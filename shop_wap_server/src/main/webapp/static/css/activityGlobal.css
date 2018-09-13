@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+/**
+ * @Company  亚信南京
+ * @Copyright  版权
+ * @author maohui
+ * @date 2016-08-10
+ * @description 校园活动公用样式
+**/
+
+/**form style**/
+html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,a,section{margin:0;padding:0;color:#757575;box-sizing:border-box;font-style:normal;font-family:"microsoft yahei";outline:none;}
+html,body{background-color:#fff;overflow-x:hidden;}
+ul li{list-style:none;}
+input[type=text],input[type=tel],input[type=number],input[type=password]{border:1px solid #dedede;-webkit-appearance:none;border-radius:0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+input[type=text]:hover,input[type=tel]:hover,input[type=number]:hover,input[type=password]:hover{border:1px solid rgba(0,133,208,0.5);box-shadow:0 0 2px 1px rgba(0,133,208,0.2);}
+input[type=radio],input[type=checkbox]{vertical-align:middle;}
+input[type=button]{-webkit-transition:all 300ms;transition:all 300ms;}
+input::-webkit-input-placeholder{color:#A8A8A8;font-size:1em;font-family:"Microsoft Yahei";}
+img{display:block;max-width:100%;height:auto;}
+
+/**公用组件：弹窗**/
+.mask{position:fixed;top:0;left:0;width:100%;height:100%;display:none;z-index:9999;}
+.mask-layer{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#000;opacity:0.6;}
+.modal{position:absolute;width:92%;top:20%;left:4%;background-color:#fff;border-radius:0.6rem;font-size:1.4rem;}
+.modal__head{width:100%;padding:0.8rem 1.0rem;background-color:#ed6c00;border-bottom:1px solid #efeff0;border-radius:0.6rem 0.6rem 0 0;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.modal__content{padding:1.5rem;min-height:8rem;}
+.modal__foot{border-top:1px solid #ed6c00;}
+.modal__foot:after{display:block;content:"";clear:both;}
+.modal__action{display:block;width:100%;padding:1.0rem 0;text-decoration:none;border:none;font-size:1.4rem;background-color:transparent;text-align:center;}
+.modal__action--left,.modal__action--right{float:left;width:50%;}
+.modal__action--left{border-radius:0 0 0 0.6rem;}
+.modal__action--right{background-color:#ed6c00;color:#fff;border-radius:0 0 0.6rem 0;}
+
+/**dispaly position**/
+.rel{position:relative;}
+.block{display:block;}
+
+/**字体**/
+.tc{text-align: center;}
+.fw{font-weight:bold;}
+.f-14{font-size:1.4rem;}
+
+/**浮动**/
+.fr{float:right;}
+.fl{float:left;}
+.clear:after{display:block;content:"";clear:both;}
+
+/**margin padding**/
+.m-auto{margin:auto;}
+.mt-10{margin-top:1.0rem;}
+.mb-10{margin-bottom:1.0rem;}
+.pb-10{padding-bottom: 1.0rem;}
+.pb-20{padding-bottom: 2.0rem;}
+
+/**width**/
+.w-100per{width:100%;}
+.w-70per{width:70%;}
+.w-1440,.w-1200{position: relative;margin: 0 auto;}
+.w-1440{max-width: 1440px;}
+.w-1200{max-width: 1200px;}
+
+/**平板**/
+@media only screen and (min-width: 768px) and (max-width:991px){
+	.w-1200{
+		width: 90%;
+	}
+}
+
+/**手机**/
+@media only screen and (max-width:767px){
+	.w-1200{width: 95%;}
+	.xs-hide{display: none;}
+}

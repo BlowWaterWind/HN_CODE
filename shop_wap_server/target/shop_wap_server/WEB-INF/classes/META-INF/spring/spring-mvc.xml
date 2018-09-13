@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<description>Spring MVC Configuration</description>
+
+	<!-- 加载配置属性文件 -->
+	<context:property-placeholder
+			ignore-unresolvable="true" location="classpath:mall.properties" />
+
+	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
+	<context:component-scan base-package="com.ai.ecs.ecm"
+							use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
+		<context:include-filter type="annotation"
+								expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 默认的注解映射的支持，org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping -->
+	<mvc:annotation-driven
+			content-negotiation-manager="contentNegotiationManager"
+			conversion-service="conversionService">
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+				<property name="writeAcceptCharset" value="false" />
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/plain;charset=UTF-8</value>
+						<value>text/html;charset=UTF-8</value>
+						<value>applicaiton/javascript;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			<!-- 将Jackson2HttpMessageConverter的默认格式化输出为false -->
+			<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+				<property name="prettyPrint" value="false" />
+				<property name="objectMapper">
+					<bean class="com.ai.ecs.ecm.mall.wap.common.mapper.JsonMapper"></bean>
+				</property>
+			</bean>
+			<!-- 使用XML格式输出数据 -->
+			<bean
+					class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+				<constructor-arg>
+					<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+						<property name="streamDriver">
+							<bean class="com.thoughtworks.xstream.io.xml.StaxDriver" />
+						</property>
+						<property name="annotatedClasses">
+							<list>
+
+							</list>
+						</property>
+					</bean>
+				</constructor-arg>
+				<property name="supportedMediaTypes" value="application/xml"></property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
+	<bean id="contentNegotiationManager"
+		  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="mediaTypes">
+			<map>
+				<entry key="xml" value="application/xml" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="favorPathExtension" value="true" />
+	</bean>
+
+	<!-- 定义视图文件解析 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="${web.view.prefix}" />
+		<property name="suffix" value="${web.view.suffix}" />
+	</bean>
+
+	<!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
+	<mvc:default-servlet-handler />
+
+	<!-- 静态资源映射 -->
+	<mvc:resources mapping="/static/**" location="/static/"
+				   cache-period="31536000" />
+
+	<!-- 定义无Controller的path<->view直接映射 -->
+	<mvc:view-controller path="/" view-name="redirect:${web.view.index}" />
+
+	<!-- 拦截器配置，拦截顺序：先执行后定义的，排在第一位的最后执行。 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/register" />
+			<mvc:exclude-mapping path="/hbstatic/**"/>
+			<mvc:exclude-mapping path="/static/**"/>
+			<mvc:exclude-mapping path="/images/**"/>
+			<mvc:exclude-mapping path="/**/**.js"/>
+			<mvc:exclude-mapping path="/**/**.css"/>
+			<mvc:exclude-mapping path="/login/getCaptchaImage.do" />
+			<mvc:exclude-mapping path="/cart/getCartCount" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.LogInterceptor" />
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/afterserviceWap/**"/>
+			<mvc:mapping path="/memberAddress/**" />
+			<mvc:mapping path="/integration/**" />
+			<mvc:mapping path="/memberCoupon/**" />
+			<mvc:mapping path="/memberFavorite/**" />
+			<mvc:mapping path="/memberInfo/**" />
+			<mvc:mapping path="/myOrder/**" />
+			<mvc:mapping path="/userRating/**" />
+			<mvc:mapping path="/goodsBuy/**" />
+			<mvc:mapping path="/cart/**" />
+			<mvc:mapping path="/broadbandInstall/**" />
+			<mvc:mapping path="/BroadbandTrade/**" />
+			<mvc:mapping path="/consupostn/**" />
+			<mvc:mapping path="/mbh/**" />
+			<mvc:mapping path="/bandInfoCollect/**" />
+			<mvc:mapping path="/ims/**" />
+			<mvc:mapping path="/simUp/toUpgradePackage" />
+			<mvc:mapping path="/simUp/confirmUpgradePackage" />
+
+			<mvc:mapping path="/broadband/linkToRenew" />
+			<!--<mvc:mapping path="/broadbandNew/**" />-->
+			<mvc:mapping path="/broadband/bindBrodbandAccount" />
+			<mvc:mapping path="/broadband/linkToBroadBandRenew" />
+			<mvc:mapping path="/broadband/linkToConfirmPackage" />
+			<mvc:mapping path="/broadband/submitOrder" />
+			<mvc:mapping path="/broadband/payOrder" />
+			<mvc:mapping path="/broadbandSpeedUp/**" />
+			<mvc:mapping path="/myBroadband/**"/>
+			<mvc:mapping path="/broadbandOrder/**" />
+			<mvc:mapping path="/broadband/broadbandHome"/>
+			<mvc:mapping path="/newHeBand/**" />
+			<mvc:mapping path="/imsOnly/**" />
+			<mvc:mapping path="/andeyecloud/**" />
+			<mvc:mapping path="/broadbandFusion/**" />
+
+			<mvc:exclude-mapping path="/memberSecurity/**" />
+			<mvc:exclude-mapping path="/login/**" />
+			<mvc:exclude-mapping path="/register/**" />
+			<mvc:exclude-mapping path="/cart/getCartCount" />
+			<mvc:exclude-mapping path="/goodsQuery/queryGoodsIsAttention"/>
+			<mvc:exclude-mapping path="/goodsBuy/afterPayOrder"/>
+			<mvc:exclude-mapping path="/goodsBuy/queryOlympicMarketList"/>
+			<mvc:exclude-mapping path="/broadbandInstall/toPayResult"/>
+			<mvc:exclude-mapping path="/broadbandInstall/payAfterNotify"/>
+			<mvc:exclude-mapping path="/BroadbandTrade/toPayResult"/>
+			<mvc:exclude-mapping path="/BroadbandTrade/payAfterNotify"/>
+			<mvc:exclude-mapping path="/consupostn/toPayResult"/>
+			<mvc:exclude-mapping path="/consupostn/payAfterNotify"/>
+			<mvc:exclude-mapping path="/broadbandOrder/toPayResult"/>
+			<mvc:exclude-mapping path="/broadbandOrder/payAfterNotify"/>
+
+			<!-- 在线售卡相关-start -->
+			<mvc:exclude-mapping path="/recmd/**" />
+			<mvc:exclude-mapping path="/myOrder/querySimOrderList" />
+			<mvc:exclude-mapping path="/myOrder/shopMap" />
+			<mvc:exclude-mapping path="/myOrder/querySimOrderDetail" />
+			<mvc:exclude-mapping path="/myOrder/querySimOrderData" />
+			<mvc:exclude-mapping path="/myOrder/queryMakeCardOrderData" />
+			<mvc:exclude-mapping path="/goodsBuy/realityVerifyV2"/>
+			<mvc:exclude-mapping path="/simBuy/**" />
+			<!--集团免登录-->
+			<mvc:exclude-mapping path="/Transfer/**" />
+			<mvc:exclude-mapping path="/GroupNoLogin/**" />
+			<!-- 在线售卡相关-end -->
+
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+
+		<!-- csrf攻击防御 -->
+		<mvc:interceptor>
+			<!-- 需拦截的地址 -->
+			<mvc:mapping path="/memberAddress/**" />
+			<mvc:mapping path="/memberInfo/**" />
+			<mvc:mapping path="/simBuy/simH5OnlineToConfirmOrder" />
+			<mvc:mapping path="/simBuy/simH5OnlineSubmitOrder" />
+			<mvc:mapping path="/login/loginByName" />
+			<mvc:mapping path="/login/loginBySms" />
+			<mvc:mapping path="/login/loginByService" />
+			<mvc:mapping path="/login/toLogin" />
+			<mvc:mapping path="/register/toRegister" />
+			<mvc:mapping path="/register/doRegister" />
+			<mvc:mapping path="/memberSecurity/toSetUserName" />
+			<mvc:mapping path="/memberSecurity/saveMemberSecurity" />
+			<mvc:mapping path="/memberSecurity/setUserName.do" />
+			<mvc:mapping path="/memberSecurity/setMemberSecurity.json" />
+			<mvc:mapping path="/memberSecurity/findPassByPhone" />
+			<mvc:mapping path="/memberSecurity/checkSms" />
+			<mvc:mapping path="/memberSecurity/toResetPass" />
+			<mvc:mapping path="/memberSecurity/toResetPassword" />
+			<mvc:mapping path="/memberSecurity/resetPass.json" />
+			<mvc:mapping path="/goodsQuery/linkToPlanDetail" />
+			<mvc:mapping path="/goodsQuery/linkToPlanList" />
+			<mvc:mapping path="/goodsQuery/linkToNumList" />
+			<mvc:mapping path="/goodsQuery/searchGoods" />
+			<mvc:mapping path="/goodsQuery/linkToGoodsList2" />
+			<mvc:mapping path="/goodsQuery/linkToGoodsList" />
+			<mvc:mapping path="/memberInfo/toUpdatePass" />
+			<mvc:mapping path="/memberInfo/updatePass.json" />
+			<mvc:mapping path="/campusmark/showDetail" />
+
+			<!-- 需排除拦截的地址 -->
+			<mvc:exclude-mapping path="/static/**" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.CSRFInterceptor" />
+		</mvc:interceptor>
+        <!-- 宽带和掌柜登陆 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/broadband/broadbandHome" />
+			<mvc:mapping path="/bargainInHeBao/init" />
+			<mvc:mapping path="/kill/init" />
+            <bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.AndAppSsoInterceptor" />
+        </mvc:interceptor>
+		<!-- o2o单点登录-->
+        <mvc:interceptor>
+			<mvc:mapping path="/o2oTest/**" />
+			<mvc:mapping path="/o2oSpeedUp/**" />
+			<mvc:mapping path="/o2oHeBand/**" />
+			<mvc:mapping path="/o2oBandBooking/**" />
+			<mvc:mapping path="/o2oAgencyHeBand/**" />
+			<mvc:mapping path="/o2oBandSource/**" />
+			<mvc:mapping path="/o2oRenew/**" />
+			<mvc:mapping path="/newO2oNewHeBand/**" />
+			<mvc:mapping path="/newO2oMbh/**" />
+			<mvc:mapping path="/newO2oConsupostn/**" />
+			<mvc:mapping path="/o2o/broadband/**" />
+			<mvc:mapping path="/o2oMyBroadband/**" />
+			<mvc:mapping path="/o2oconsupostn/**" />
+			<mvc:mapping path="/o2ombh/**" />
+			<mvc:mapping path="/o2oBussinessRecommend/**" />
+			<mvc:mapping path="/o2oOrder/**" />
+			<mvc:mapping path="/o2obroadbandInstall/**" />
+			<mvc:mapping path="/o2oNewHeBand/**" />
+			<mvc:mapping path="/o2oMarketing/**" />
+			<mvc:mapping path="/o2oBusiCollect/**" />
+			<mvc:mapping path="/recmd/o2OGenRecmdQrCode"/>
+			<mvc:mapping path="/o2oSimOper/**"/><!--和掌柜查询号卡订单操作订单-->
+			<mvc:mapping path="/recmd/o2OSimIndex"/>
+			<mvc:mapping path="/recmd/o2oHaoduankaIndex"/>
+			<mvc:mapping path="/qrcodeOper/**"/>
+			<mvc:mapping path="/o2oImsOnly/**" />
+			<mvc:mapping path="/o2oAndEyeCloud/**" />
+			<mvc:mapping path="/o2oBroadFusion/**" />
+			<mvc:mapping path="/qrcodeOper/**"/>
+			<mvc:exclude-mapping path="/o2oTest/loginError" />
+			<mvc:exclude-mapping path="/o2oOrder/toPayResult" />
+			<mvc:exclude-mapping path="/o2oOrder/payAfterNotify" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.O2oAppSsoInterceptor" />
+        </mvc:interceptor>
+
+		<!-- 和包登陆 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/bargainInHeBao/**"/>
+			<mvc:mapping path="/kill/init"/>
+			<mvc:mapping path="/kill/getKillQualification"/>
+			<mvc:mapping path="/kill/initKillConfirmOrder"/>
+			<mvc:mapping path="/marketing/cf/**" />
+
+			<mvc:exclude-mapping path="/bargainInHeBao/initHelpCut" />
+			<mvc:exclude-mapping path="/bargainInHeBao/sendRandomCode" />
+			<mvc:exclude-mapping path="/bargainInHeBao/helpCut" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.HeBaoLoginInterceptor" />
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/infoCollect/**" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.O2oAppSsoInterceptor" />
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/businessPromotion/**" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.O2oAppSsoInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/businessKnowledge/**" />
+			<bean class="com.ai.ecs.ecm.mall.wap.platform.interceptor.O2oAppSsoInterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+
+	<!-- 支持Shiro对Controller的方法级AOP安全控制 begin -->
+	<bean
+			class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+			depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+
+	<!-- 自定义转换器 -->
+	<bean id="conversionService"
+		  class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="com.ai.ecs.common.framework.spring.convert.DateConverter" />
+			</set>
+		</property>
+	</bean>
+
+	<bean id="handlerExceptionResolver"
+		  class="com.ai.ecs.common.framework.spring.error.DefaultHandlerMethodExceptionResolver">
+		<property name="order" value="0" />
+		<property name="defaultErrorView" value="error/500" /> <!--错误页面 -->
+		<property name="messageConverters" ref="messageConverters" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+				<prop key="java.lang.Throwable">error/500</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="jsonMessageConverterExt"
+		  class="com.ai.ecs.common.framework.spring.MappingJackson2HttpMessageConverterExt" />
+	<bean id="stringHttpMessageConverter"
+		  class="org.springframework.http.converter.StringHttpMessageConverter" />
+	<bean id="byteArrayHttpMessageConverter"
+		  class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+
+	<util:list id="messageConverters">
+		<ref bean="jsonMessageConverterExt" />
+		<ref bean="stringHttpMessageConverter" />
+		<ref bean="byteArrayHttpMessageConverter" />
+	</util:list>
+
+
+	<!--<bean
+			class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+				<prop key="java.lang.Throwable">error/500</prop>
+			</props>
+		</property>
+	</bean>-->
+	<!-- 支持Shiro对Controller的方法级AOP安全控制 end -->
+
+	<!-- 上传文件拦截，设置最大上传文件大小 10M=10*1024*1024(B)=10485760 bytes -->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="${web.maxUploadSize}" />
+	</bean>
+
+	<!--<bean id="mallAspect" class="com.ai.ecs.ecm.mall.wap.platform.interceptor.MallAspect" />
+	<aop:config>
+		<aop:aspect id="doAspect" ref="mallAspect">
+			<aop:pointcut id="allIcsPoint"
+						  expression="execution (* com.ai.ecs.ecm.mall.wap.*.*(..))" />
+			<aop:around pointcut-ref="allIcsPoint" method="doAround" />
+		</aop:aspect>
+	</aop:config>-->
+
+</beans>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>在线售卡H5-资料填写</title>
+    <link href="css/wap.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- start container -->
+    <div class="container bg-gray">
+        <div class="topbar">
+            <a href="javascript:;" class="icon icon-return">返回</a>
+            <a href="javascript:;" class="icon icon-close">关闭</a>
+            <h3>资料填写</h3>
+            <a href="javascript:;" class="icon icon-more">更多</a>
+        </div>
+        <!-- end topbar -->
+        <div class="selected">已选择<span>“不限量套餐98元档”</span></div>
+        <div class="cells">
+            <div class="cell">
+                <div class="cell-top">
+                    <h3>根据国家实名制要求，请准确提供身份证信息</h3>
+                </div>
+                <ul class="cell-list">
+                    <li>
+                        <label class="must">姓名</label>
+                        <input type="text" name="name" placeholder="请输入姓名">
+                    </li>
+                    <li>
+                        <label class="must">身份证</label>
+                        <input type="tel" name="name" maxlength="18" placeholder="请输入身份证号码">
+                    </li>
+                    <li>
+                        <label>联系电话</label>
+                        <input type="tel" name="name" maxlength="11" placeholder="请输入电话号码">
+                    </li>
+                </ul>
+            </div>
+            <div class="cell">
+                <div class="cell-top">
+                    <h3>请选择号码</h3>
+                </div>
+                <ul class="cell-list">
+                    <li>
+                        <label>号码归属</label>
+                        <p id="picker1">请选择号码归属</p>
+                        <i class="caret"></i>
+                    </li>
+                    <li onclick="toggleModal('select-number')">
+                        <label>选择号码</label>
+                        <i class="caret"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="cell">
+                <div class="cell-top">
+                    <h3>请填写配送地址</h3>
+                    <span>(仅支持湖南省内配送)</span>
+                </div>
+                <ul class="cell-list">
+                    <li>
+                        <label>所在地区</label>
+                        <p id="picker2">请选择区/县</p>
+                        <i class="caret"></i>
+                    </li>
+                    <li>
+                        <input type="text" name="address" placeholder="街道/镇+村/小区/写字楼+门牌号">
+                    </li>
+                </ul>
+            </div>
+            <div class="agree">
+                <p>
+                    <input type="checkbox" id="test1" />
+                    <label for="test1">我已阅读并同意《客户入网服务协议》</label>
+                </p>
+            </div>
+            <input type="button" name="" value="立即提交" class="tj-btn" onclick="toggleModal('submit-modal')">
+            <p class="fill-tips">请保持联系号码畅通，我们可能随时与您联系，联系电话无人接听或恶意下单时，将不予发货，请知悉，谢谢！</p>
+        </div>
+    </div>
+    <!-- end container -->
+    <!-- start modal -->
+    <div id="select-number" class="mask-layer">
+        <div class="modal large-modal">
+            <a href="javascript:void(0)" class="modal-close" onclick="toggleModal('select-number')"></a>
+            <div class="modal-content">
+                <div class="modal-con">
+                    <div class="search-con">
+                        <input type="tel" name="" placeholder="生日、幸运数字等" class="search-input">
+                        <ul class="search-list">
+                            <li>18774658421</li>
+                            <li>18774658421</li>
+                            <li>18774650056</li>
+                            <li>18774656613</li>
+                            <li>18774658421</li>
+                            <li>18774658421</li>
+                            <li>18774650056</li>
+                            <li>18774656613</li>
+                            <li>18774650056</li>
+                            <li>18774656613</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="full-btn">换一批</a>
+        </div>
+    </div>
+    <!-- end modal -->
+    <!-- start modal -->
+    <div id="submit-modal" class="mask-layer">
+        <div class="full-modal">
+            <div class="modal-wrap">
+                <div class="modal-top">
+                    <h3>我的订单</h3>
+                    <a href="javascript:void(0)" class="icon-close" onclick="toggleModal('submit-modal')"></a>
+                </div>
+                <ul class="submit-list">
+                    <li>所选号码：<span>18812345678</span></li>
+                    <li>预存话费：<span>60元</span></li>
+                    <li>支付金额：<span>50元</span></li>
+                </ul>
+                <a href="javascript:;" class="modal-foot">
+                    <img src="images/hb-pay.png">
+                    <div class="order-text">
+                        <h3>我的订单</h3>
+                        <span>移动自有快捷支付</span>
+                    </div>
+                    <i class="caret-01"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- end modal -->
+    <script type="text/javascript" src="lib/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="lib/flexible.js"></script>
+    <script type="text/javascript" src="lib/picker.min.js"></script>
+	<script type="text/javascript" src="lib/city.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
